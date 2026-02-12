@@ -38,6 +38,47 @@ A training-free framework for zero-shot medical anomaly localisation using visio
 
 *IoU distribution analysis by lesion size (left panels) and disease type (right panels).*
 
+## Getting Started
+
+### Quick Installation
+
+```bash
+# Clone repository
+git clone https://github.com/bkainz/WALDO_MICCAI26_demo.git
+cd WALDO_MICCAI26_demo
+
+# Install with pip
+pip install -e .
+```
+
+### Quick Start (3 commands)
+
+```bash
+# 1. Download NOVA dataset
+python scripts/download_datasets.py --dataset nova --extract-healthy
+
+# 2. Run inference (requires API key)
+export OPENAI_API_KEY="your-key-here"
+python scripts/run_inference.py --dataset nova --model gpt-4o --n-samples 10
+
+# 3. Analyze results
+python scripts/read_results.py --dataset nova
+```
+
+### Try the Demo (No API Key Required)
+
+```bash
+# Run quickstart demo
+python examples/quickstart.py
+
+# This demonstrates:
+# - Dataset loading
+# - Wasserstein reference selection
+# - Differential prompting workflow
+```
+
+For detailed instructions, see [USAGE.md](USAGE.md).
+
 ## Qualitative Examples
 
 ### NOVA Brain MRI Localisation
@@ -78,9 +119,95 @@ WALDO uses differential prompting to compare query images against healthy refere
 
 ## Installation
 
+### Option 1: Install as Package (Recommended)
+
+```bash
+pip install -e .
+
+# With optional dependencies
+pip install -e ".[viz,cxr]"  # For visualization and CXR preprocessing
+```
+
+### Option 2: Manual Requirements
+
 ```bash
 pip install -r requirements.txt
 ```
+
+## Utilities and Scripts
+
+### Dataset Management
+
+**`scripts/download_datasets.py`** - Automated dataset downloading and preprocessing
+```bash
+# Download NOVA with healthy reference extraction
+python scripts/download_datasets.py --dataset nova --extract-healthy --n-healthy 50
+
+# Get VinDr-CXR download instructions
+python scripts/download_datasets.py --dataset cxr
+
+# Custom directories
+python scripts/download_datasets.py --dataset nova \\
+    --output-dir /data/nova --cache-dir /cache/hf
+```
+
+Features:
+- Automatic NOVA download from HuggingFace
+- Proper annotation-image alignment (critical for NOVA)
+- Healthy reference extraction
+- VinDr-CXR setup instructions
+
+### Inference
+
+**`scripts/run_inference.py`** - Complete end-to-end inference pipeline
+```bash
+# Run WALDO with GPT-4o
+python scripts/run_inference.py --dataset nova --model gpt-4o --api-key YOUR_KEY
+
+# Use Qwen via OpenRouter
+python scripts/run_inference.py --dataset nova \\
+    --model qwen/qwen-2.5-72b-instruct --openrouter --api-key YOUR_KEY
+
+# Advanced configuration
+python scripts/run_inference.py --dataset nova --model gpt-4o \\
+    --n-samples 100 --n-views 7 --n-references 5 --n-ref-pool 100
+```
+
+Features:
+- Automated dataset loading
+- Wasserstein reference selection
+- VLM API integration (OpenAI, OpenRouter)
+- Evaluation and metrics
+- Checkpoint saving
+
+### Analysis
+
+**`scripts/read_results.py`** - Comprehensive results analysis
+```bash
+# Analyze all pre-computed results
+python scripts/read_results.py --dataset all
+
+# Analyze specific dataset
+python scripts/read_results.py --dataset nova --results-dir custom_results/
+```
+
+Features:
+- mAP@30, mAP@50, Average IoU
+- 95% confidence intervals
+- Formatted result tables
+
+### Examples
+
+**`examples/quickstart.py`** - Interactive demo (no API key required)
+```bash
+python examples/quickstart.py --output-dir outputs/
+```
+
+Features:
+- Dataset loading demonstration
+- Wasserstein reference selection walkthrough
+- Visualization generation
+- Educational workflow explanation
 
 ## Quick Start
 
