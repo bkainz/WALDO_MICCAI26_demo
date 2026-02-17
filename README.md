@@ -36,7 +36,7 @@ A training-free framework for zero-shot medical anomaly localisation using visio
   <img src="figures/cxr_analysis_violin.png" width="48%">
 </p>
 
-*IoU distribution analysis by lesion size (left panels) and disease type (right panels).*
+*IoU distribution analysis by lesion size (left panels) and disease type (right panels). Left two: NOVA, Right two: VinDr-CXR*
 
 ## Getting Started
 
