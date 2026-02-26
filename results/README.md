@@ -3,7 +3,7 @@
 A training-free framework for zero-shot medical anomaly localisation using vision-language models with optimal transport-based reference selection.
 
 <p align="center">
-  <img src="figures/waldo_method_overview.png" width="100%">
+  <img src="../figures/waldo_method_overview.png" width="100%">
 </p>
 
 ## Key Features
@@ -32,8 +32,8 @@ A training-free framework for zero-shot medical anomaly localisation using visio
 | Improvement | +21.3% | +6.4% | +13.3% |
 
 <p align="center">
-  <img src="figures/nova_analysis_violin.png" width="48%">
-  <img src="figures/cxr_analysis_violin.png" width="48%">
+  <img src="../figures/nova_analysis_violin.png" width="48%">
+  <img src="../figures/cxr_analysis_violin.png" width="48%">
 </p>
 
 *IoU distribution analysis by lesion size (left panels) and disease type (right panels). Left two: NOVA, Right two: VinDr-CXR*
@@ -85,18 +85,18 @@ For detailed instructions, see [USAGE.md](USAGE.md).
 
 | High IoU (0.87) | Medium IoU (0.62) | Challenging (0.34) |
 |:---------------:|:-----------------:|:------------------:|
-| ![](figures/qualitative_samples/nova/nova_01_(3c)_FLAIR_hype_iou0.87.png) | ![](figures/qualitative_samples/nova/nova_14_Axial_T1_(A)_iou0.62.png) | ![](figures/qualitative_samples/nova/nova_30_Sagittal_pre_(3_iou0.34.png) |
+| ![](../figures/qualitative_samples/nova/nova_01_(3c)_FLAIR_hype_iou0.87.png) | ![](../figures/qualitative_samples/nova/nova_14_Axial_T1_(A)_iou0.62.png) | ![](../figures/qualitative_samples/nova/nova_30_Sagittal_pre_(3_iou0.34.png) |
 | FLAIR hyperintensity | Axial T1 lesion | Sagittal pre-contrast |
 
 ### VinDr-CXR Localisation
 
 | Consolidation (0.85) | ILD (0.81) | Aortic Enlargement (0.85) |
 |:--------------------:|:----------:|:-------------------------:|
-| ![](figures/qualitative_samples/cxr/cxr_03_Consolidation_iou0.85.png) | ![](figures/qualitative_samples/cxr/cxr_07_ILD_iou0.81.png) | ![](figures/qualitative_samples/cxr/cxr_04_Aortic_enlargement_iou0.85.png) |
+| ![](../figures/qualitative_samples/cxr/cxr_03_Consolidation_iou0.85.png) | ![](../figures/qualitative_samples/cxr/cxr_07_ILD_iou0.81.png) | ![](../figures/qualitative_samples/cxr/cxr_04_Aortic_enlargement_iou0.85.png) |
 
 *Green boxes: Ground truth annotations. Red dashed boxes: WALDO predictions.*
 
-More qualitative examples are available in `figures/qualitative_samples/` (30 NOVA + 30 CXR samples).
+More qualitative examples are available in `../figures/qualitative_samples/` (30 NOVA + 30 CXR samples).
 
 ## Prompt Examples
 
@@ -104,17 +104,17 @@ WALDO uses differential prompting to compare query images against healthy refere
 
 ### Stage 1: Differential Analysis (Brain MRI)
 <p align="center">
-  <img src="figures/prompts/waldo_prompt_v16.png" width="80%">
+  <img src="../figures/prompts/waldo_prompt_v16.png" width="80%">
 </p>
 
 ### Stage 2: Cross-Validation
 <p align="center">
-  <img src="figures/prompts/waldo_prompt_v19.png" width="80%">
+  <img src="../figures/prompts/waldo_prompt_v19.png" width="80%">
 </p>
 
 ### Chest X-Ray Prompting
 <p align="center">
-  <img src="figures/prompts/waldo_cxr_prompt_v3.png" width="80%">
+  <img src="../figures/prompts/waldo_cxr_prompt_v3.png" width="80%">
 </p>
 
 ## Installation
@@ -261,7 +261,7 @@ waldo-demo/
 ├── results/                        # Raw experimental results
 │   ├── nova/                      # NOVA brain MRI results (2 files)
 │   └── cxr/                       # VinDr-CXR results (6 files)
-├── figures/
+├── ../figures/
 │   ├── waldo_method_overview.png  # Method diagram
 │   ├── nova_analysis_violin.png   # NOVA IoU analysis
 │   ├── cxr_analysis_violin.png    # CXR IoU analysis
