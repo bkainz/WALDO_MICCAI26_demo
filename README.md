@@ -79,25 +79,6 @@ python examples/quickstart.py
 For detailed instructions, see [USAGE.md](USAGE.md).
 
 
-## Prompt Examples
-
-WALDO uses differential prompting to compare query images against healthy references:
-
-### Stage 1: Differential Analysis (Brain MRI)
-<p align="center">
-  <img src="figures/prompts/waldo_prompt_v16.png" width="80%">
-</p>
-
-### Stage 2: Cross-Validation
-<p align="center">
-  <img src="figures/prompts/waldo_prompt_v19.png" width="80%">
-</p>
-
-### Chest X-Ray Prompting
-<p align="center">
-  <img src="figures/prompts/waldo_cxr_prompt_v3.png" width="80%">
-</p>
-
 ## Installation
 
 ### Option 1: Install as Package (Recommended)
