@@ -33,6 +33,7 @@ A training-free framework for zero-shot medical anomaly localisation using visio
 
 <p align="center">
   <img src="figures/nova_analysis_violin.png" width="48%">
+  <img src="figures/cxr_analysis_violin.png" width="48%">
 </p>
 
 *IoU distribution analysis by lesion size (left panels) and disease type (right panels). Left two: NOVA, Right two: VinDr-CXR*
@@ -78,6 +79,24 @@ python examples/quickstart.py
 
 For detailed instructions, see [USAGE.md](USAGE.md).
 
+## Qualitative Examples
+
+### NOVA Brain MRI Localisation
+
+| High IoU (0.87) | Medium IoU (0.62) | Challenging (0.34) |
+|:---------------:|:-----------------:|:------------------:|
+| ![](figures/qualitative_samples/nova/nova_01_(3c)_FLAIR_hype_iou0.87.png) | ![](figures/qualitative_samples/nova/nova_14_Axial_T1_(A)_iou0.62.png) | ![](figures/qualitative_samples/nova/nova_30_Sagittal_pre_(3_iou0.34.png) |
+| FLAIR hyperintensity | Axial T1 lesion | Sagittal pre-contrast |
+
+### VinDr-CXR Localisation
+
+| Consolidation (0.85) | ILD (0.81) | Aortic Enlargement (0.85) |
+|:--------------------:|:----------:|:-------------------------:|
+| ![](figures/qualitative_samples/cxr/cxr_03_Consolidation_iou0.85.png) | ![](figures/qualitative_samples/cxr/cxr_07_ILD_iou0.81.png) | ![](figures/qualitative_samples/cxr/cxr_04_Aortic_enlargement_iou0.85.png) |
+
+*Green boxes: Ground truth annotations. Red dashed boxes: WALDO predictions.*
+
+More qualitative examples are available in `figures/qualitative_samples/` (30 NOVA + 30 CXR samples).
 
 ## Prompt Examples
 
