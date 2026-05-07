@@ -270,11 +270,15 @@ WALDO consists of three stages:
 ## Citation
 
 ```bibtex
-@inproceedings{waldo2026,
-  title={WALDO: Wasserstein-Aligned Localisation via Differential Observations for Zero-Shot Medical Anomaly Detection},
-  author={...},
-  booktitle={Medical Image Computing and Computer Assisted Intervention (MICCAI)},
-  year={2026}
+@article{kainz2026wasserstein,
+  title={Wasserstein-Aligned Localisation for VLM-Based Distributional OOD Detection in Medical Imaging},
+  author={Bernhard Kainz and Johanna P. Mueller and Matthew Baugh and Cosmin I. Bercea},
+  journal={arXiv preprint arXiv:2605.05161},
+  year={2026},
+  url={https://arxiv.org/abs/2605.05161},
+  eprint={2605.05161},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV}
 }
 ```
 
