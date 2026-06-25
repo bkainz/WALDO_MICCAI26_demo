@@ -29,9 +29,7 @@ small, readable, runnable package.
   [`results/`](results/) are the **genuine full-run, per-image outputs** that back them
   (NOVA *n*=906; VinDr-CXR *n*=949). They are provided so the reported metrics can be
   recomputed directly (`python scripts/read_results.py --dataset all`).
-- Some NOVA rows are *n*=50 API runs (wider confidence intervals): per-image JSONs are
-  shipped for every NOVA row except GPT-4o, whose reported figures (zero-shot 19.0 /
-  WALDO 32.0) are the mean of multiple n=50 API runs and so are not shipped as single files.
+- For NOVA, the reported GPT-4o figures are based on repeated (n=50) API evaluations and are reported as the mean across these runs. Per-image JSON files are available for all other NOVA rows where they were generated and retained. For GPT-4o, the retained evidence is the repeated-run aggregate rather than a single per-image JSON file. The original full-cohort GPT-4o JSON file covering all (n=906) NOVA cases could not be included because it was lost when the temporary cluster workspace exceeded its storage-retention window. The file could not be recovered from the cluster. A full rerun over all 906 cases would incur substantial additional API token and energy costs; given that the current estimate is already based on repeated (n=50) runs. 
 
 ### Known, intentional differences (full transparency)
 
