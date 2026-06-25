@@ -25,7 +25,7 @@ setup(
         "Pillow>=9.0.0",
         "torch>=2.0.0",
         "torchvision>=0.15.0",
-        "transformers>=4.44.0",  # DINOv3-ViT-B/16 backbone (DINOv2 fallback on older versions)
+        "transformers>=4.53.0",  # DINOv3-ViT-B/16 backbone (AutoModel support)
         "openai>=1.0.0",
         "huggingface_hub>=0.19.0",
         "datasets>=2.14.0",

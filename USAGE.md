@@ -232,10 +232,11 @@ import numpy as np
 
 # Initialize
 waldo = WALDO(
-    vlm_client=your_vlm_client,
+    vlm_client=your_vlm_client,   # OpenAI-compatible client
     model="gpt-4o",
-    n_views=5,
-    n_references=3,
+    n_references=5,               # K references per query
+    n_stage1_refs=3,              # Stage-1 differential references
+    n_stage2_refs=2,              # Stage-2 refinement references
 )
 
 # Prepare data
@@ -356,8 +357,10 @@ huggingface-cli login
 # Force CPU for the backbone:
 waldo = WALDO(..., device="cpu")
 ```
-If DINOv3 cannot be loaded, the selector automatically falls back to `facebook/dinov2-base`
-with a printed warning.
+If DINOv3 cannot be loaded, the run raises with setup instructions (it does **not**
+silently switch backbones). For a quick non-paper smoke test you can opt in to the
+DINOv2-base fallback with `--allow-dinov2-fallback` (CLI) or
+`WALDO(..., allow_dinov2_fallback=True)`.
 
 ## Citation
 

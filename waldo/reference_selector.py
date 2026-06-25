@@ -42,15 +42,18 @@ class WassersteinReferenceSelector:
     """Select healthy references via entropy-weighted Sliced Wasserstein + DPP.
 
     Args:
-        model_name: HuggingFace id of the DINOv3 backbone (ViT-B/16). Falls back to
-            DINOv2-base with a warning if DINOv3 cannot be loaded (it is gated on the
-            Hub and requires accepting the licence + an auth token).
+        model_name: HuggingFace id of the DINOv3 backbone (ViT-B/16). DINOv3 is gated
+            on the Hub (requires accepting the licence + an auth token). If it cannot
+            be loaded the constructor RAISES with setup instructions, unless
+            allow_dinov2_fallback=True (see below).
         device: torch device ("cuda" or "cpu").
         n_projections: number of random projections M for SW approximation.
         feature_size: square resize applied before feature extraction.
         goldilocks_percentiles: (low, high) percentile band defining the Goldilocks zone.
         dpp_beta: sharpness of the DPP diversity kernel.
         seed: RNG seed for the random projections (the paper uses seed 42).
+        allow_dinov2_fallback: if True, fall back to the (non-paper) DINOv2-base
+            backbone when DINOv3 is unavailable, instead of raising. Default False.
     """
 
     def __init__(

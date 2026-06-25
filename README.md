@@ -101,8 +101,10 @@ pip install -e ".[viz,cxr]"      # + visualisation and CXR DICOM support
 ```
 
 The DINOv3-ViT-B/16 backbone (`facebook/dinov3-vitb16-pretrain-lvd1689m`) is **gated** on the
-HuggingFace Hub: accept its licence and run `huggingface-cli login`. If it cannot be loaded,
-the reference selector automatically falls back to `facebook/dinov2-base` with a warning.
+HuggingFace Hub: accept its licence and run `huggingface-cli login`. If it cannot be loaded the
+run **raises** with setup instructions — it does not silently switch backbones. For a quick
+non-paper smoke test, pass `--allow-dinov2-fallback` (scripts) or
+`WALDO(..., allow_dinov2_fallback=True)` to use `facebook/dinov2-base` instead.
 
 ## Quick start
 

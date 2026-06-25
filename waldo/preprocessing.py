@@ -271,9 +271,9 @@ class DINOv3FeatureExtractor:
 
     This mirrors the backbone used in the paper (DINOv3-ViT-B/16, 768-d patch
     tokens). It is a thin convenience wrapper around the same loading/extraction
-    logic as :class:`waldo.reference_selector.WassersteinReferenceSelector`; if
-    DINOv3 cannot be loaded (it is gated on the HuggingFace Hub) it falls back to
-    DINOv2-base with a warning.
+    logic as :class:`waldo.reference_selector.WassersteinReferenceSelector`. DINOv3
+    is gated on the HuggingFace Hub; if it cannot be loaded this RAISES with setup
+    instructions, unless ``allow_dinov2_fallback=True`` is passed (non-paper).
     """
 
     def __init__(
