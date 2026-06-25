@@ -60,12 +60,13 @@ runs; 50 for the API-cost-limited rows (which is why those rows have wider CIs i
 | Qwen3-VL-235B (MoE) | Zero-shot | 906 | 36.3 | 20.1 | 25.1 | ✓ |
 | Qwen3-VL-235B (MoE) | WALDO | 906 | 31.8 | 15.2 | 21.7 | ✓ |
 | Gemini-2.0-Flash | Zero-shot (rep.) | 906 | 18.1 | 6.4 | 15.2 | ✓ |
-| Gemini-2.0-Flash | WALDO | 50 | 38.0 | 10.0 | 24.5 | ✓ |
+| Gemini-2.0-Flash | WALDO | 906 | 38.0 | 10.0 | 24.5 | ✓ |
 
 Primary result: WALDO with Qwen2.5-VL-72B reaches **43.5% mAP@30** (95% CI [40.4, 46.7]),
 a +19.5% relative improvement over the zero-shot reproduction (36.4%); a paired McNemar test
 on hit@30 confirms significance (*p*=1.8×10⁻⁶). Per-image JSONs are shipped for every ✓ row
-and recompute to the value shown. **†**  For NOVA, the reported GPT-4o figures are based on repeated (n=50) API evaluations and are reported as the mean across these runs. Per-image JSON files are available for all other NOVA rows where they were generated and retained. The original full-cohort GPT-4o JSON file covering all (n=906) NOVA cases could not be included because it was lost when the temporary cluster workspace exceeded its storage-retention window. A full rerun over all 906 cases would incur substantial additional API token and energy costs; given that the current estimate is already based on repeated (n=50) runs.
+and recompute to the value shown. **†**  For NOVA, the reported GPT-4o figures are based on repeated (n=50) API evaluations and are reported as the mean across these runs. 
+Per-image JSON files are available for all other NOVA rows where they were generated and retained. The original full-cohort GPT-4o JSON file covering all (n=906) NOVA cases could not be included because it was lost when the temporary cluster workspace exceeded its storage-retention window. A full rerun over all 906 cases would incur substantial additional API token and energy costs; given that the current estimate is already based on repeated (n=50) runs.
 
 ### VinDr-CXR (*n*=949 with ≥1 annotated finding)
 
