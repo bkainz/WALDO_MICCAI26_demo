@@ -31,6 +31,22 @@ def load_results(results_path: str) -> Dict:
         return json.load(f)
 
 
+def extract_results(data: Dict) -> List[Dict]:
+    """Return the per-image results list from any of our JSON layouts.
+
+    Handles both ``results`` (CXR) and ``detailed_results`` (NOVA), where the
+    latter may be a list or a dict keyed by method (e.g. ``waldo_complete``).
+    """
+    if isinstance(data.get("results"), list):
+        return data["results"]
+    detailed = data.get("detailed_results")
+    if isinstance(detailed, list):
+        return detailed
+    if isinstance(detailed, dict):
+        return detailed.get("waldo_complete") or (next(iter(detailed.values()), []) or [])
+    return []
+
+
 def summarize_results(results: List[Dict], name: str) -> Dict:
     """Compute summary statistics for results."""
     metrics = compute_map(results)
@@ -81,42 +97,18 @@ def analyze_nova(results_dir: Path):
     summaries = []
 
     # Load WALDO results
-    waldo_files = list(results_dir.glob("nova_waldo_*.json"))
-    for f in sorted(waldo_files):
-        data = load_results(f)
-        model = f.stem.replace('nova_waldo_', '')
-
-        # Handle different result formats
-        if 'results' in data:
-            results = data['results']
-        elif 'detailed_results' in data:
-            # NOVA format has methods as keys
-            detailed = data['detailed_results']
-            if isinstance(detailed, dict):
-                # Use waldo_complete if available
-                if 'waldo_complete' in detailed:
-                    results = detailed['waldo_complete']
-                else:
-                    # Use first available method
-                    results = list(detailed.values())[0] if detailed else []
-            else:
-                results = detailed
-        else:
-            results = []
-
+    for f in sorted(results_dir.glob("nova_waldo_*.json")):
+        results = extract_results(load_results(f))
         if results:
-            summary = summarize_results(results, f"WALDO ({model})")
-            summaries.append(summary)
+            model = f.stem.replace('nova_waldo_', '')
+            summaries.append(summarize_results(results, f"WALDO ({model})"))
 
     # Load zero-shot results
-    zs_files = list(results_dir.glob("nova_zeroshot_*.json"))
-    for f in sorted(zs_files):
-        data = load_results(f)
-        results = data.get('results', [])
-        model = f.stem.replace('nova_zeroshot_', '')
+    for f in sorted(results_dir.glob("nova_zeroshot_*.json")):
+        results = extract_results(load_results(f))
         if results:
-            summary = summarize_results(results, f"Zero-shot ({model})")
-            summaries.append(summary)
+            model = f.stem.replace('nova_zeroshot_', '')
+            summaries.append(summarize_results(results, f"Zero-shot ({model})"))
 
     if summaries:
         print_results_table(summaries)
@@ -133,22 +125,18 @@ def analyze_cxr(results_dir: Path):
     summaries = []
 
     # Load WALDO results
-    waldo_files = list(results_dir.glob("cxr_waldo_*.json"))
-    for f in sorted(waldo_files):
-        data = load_results(f)
-        results = data.get('results', [])
-        model = f.stem.replace('cxr_waldo_', '')
-        summary = summarize_results(results, f"WALDO ({model})")
-        summaries.append(summary)
+    for f in sorted(results_dir.glob("cxr_waldo_*.json")):
+        results = extract_results(load_results(f))
+        if results:
+            model = f.stem.replace('cxr_waldo_', '')
+            summaries.append(summarize_results(results, f"WALDO ({model})"))
 
     # Load zero-shot results
-    zs_files = list(results_dir.glob("cxr_zeroshot_*.json"))
-    for f in sorted(zs_files):
-        data = load_results(f)
-        results = data.get('results', [])
-        model = f.stem.replace('cxr_zeroshot_', '')
-        summary = summarize_results(results, f"Zero-shot ({model})")
-        summaries.append(summary)
+    for f in sorted(results_dir.glob("cxr_zeroshot_*.json")):
+        results = extract_results(load_results(f))
+        if results:
+            model = f.stem.replace('cxr_zeroshot_', '')
+            summaries.append(summarize_results(results, f"Zero-shot ({model})"))
 
     if summaries:
         print_results_table(summaries)

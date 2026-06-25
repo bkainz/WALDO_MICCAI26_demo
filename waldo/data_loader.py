@@ -61,7 +61,10 @@ class NOVADataLoader:
         self._annotations = None
         self._images_dataset = None
         self._filename_to_idx = None
-        self._processed_annotations = None
+        # Cache processed annotations PER filter_empty value: calling get_sample
+        # (filter_empty=True) then get_healthy_samples (filter_empty=False) must not
+        # share a cache, or the healthy-reference pool would come back empty.
+        self._processed_cache = {}
 
         if load_images_on_init:
             self._load_datasets()
@@ -104,8 +107,8 @@ class NOVADataLoader:
         Returns:
             List of processed annotation dictionaries
         """
-        if self._processed_annotations is not None:
-            return self._processed_annotations
+        if filter_empty in self._processed_cache:
+            return self._processed_cache[filter_empty]
 
         self._load_datasets()
 
@@ -114,9 +117,10 @@ class NOVADataLoader:
             ann = self._annotations[i]
             filename = ann['filename']
 
-            # Extract GT boxes (gold standard only)
+            # Extract GT boxes (gold standard only). Some NOVA rows have bboxes=None
+            # (key present but null), so `or []` is required, not just a default.
             gt_boxes = []
-            for bbox in ann.get('bboxes', []):
+            for bbox in (ann.get('bboxes') or []):
                 if bbox.get('source') == 'gold':
                     x1, y1 = bbox['x'], bbox['y']
                     x2, y2 = x1 + bbox['width'], y1 + bbox['height']
@@ -138,7 +142,7 @@ class NOVADataLoader:
                 'image_size': [ann.get('width', 512), ann.get('height', 512)]
             })
 
-        self._processed_annotations = processed
+        self._processed_cache[filter_empty] = processed
         return processed
 
     def get_sample(self, index: int, filter_empty: bool = True) -> DataSample:

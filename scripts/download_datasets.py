@@ -93,9 +93,10 @@ def download_nova(output_dir: Path, cache_dir: Optional[Path] = None) -> Tuple[i
         ann = annotations[i]
         filename = ann['filename']
 
-        # Get GT bboxes (gold standard only)
+        # Get GT bboxes (gold standard only). NOTE: some NOVA rows have bboxes=None
+        # (key present but null), so `or []` is required, not just a default.
         gt_boxes = []
-        for bbox in ann.get('bboxes', []):
+        for bbox in (ann.get('bboxes') or []):
             if bbox.get('source') == 'gold':
                 x1, y1 = bbox['x'], bbox['y']
                 x2, y2 = x1 + bbox['width'], y1 + bbox['height']

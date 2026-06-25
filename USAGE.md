@@ -143,9 +143,8 @@ python scripts/run_inference.py \\
     --dataset nova \\
     --model gpt-4o \\
     --n-samples 100 \\
-    --n-views 7 \\              # More views = better consistency
-    --n-references 5 \\         # More references per view
-    --n-ref-pool 100 \\         # Larger reference pool
+    --n-references 5 \\         # K references per query (paper: 5 = 3 Stage 1 + 2 Stage 2)
+    --n-ref-pool 100 \\         # Larger healthy reference pool
     --output results/my_experiment.json
 ```
 
@@ -156,9 +155,9 @@ python scripts/run_inference.py \\
 - `--api-key`: API key (or set `OPENAI_API_KEY` env var)
 - `--openrouter`: Use OpenRouter API instead of OpenAI
 - `--n-samples`: Number of test samples
-- `--n-views`: Number of self-consistency views (default: 5)
-- `--n-references`: References per view (default: 3)
-- `--n-ref-pool`: Size of reference pool (default: 50)
+- `--n-references`: K references per query (default: 5; split 3 Stage 1 + 2 Stage 2)
+- `--n-ref-pool`: Size of healthy reference pool (default: 50)
+- `--device`: Device for the DINOv3 backbone (`cuda` or `cpu`)
 - `--output`: Output JSON file path
 
 ## Evaluating Results
@@ -260,16 +259,18 @@ confidences = result['confidences']
 ```python
 from waldo.reference_selector import WassersteinReferenceSelector
 
-# Initialize selector
+# Initialize selector (DINOv3-ViT-B/16 + entropy-weighted Sliced Wasserstein)
 selector = WassersteinReferenceSelector(device="cuda")
 
-# Select references
+# Select K diverse Goldilocks-zone references
 ref_indices = selector.select_references(
     query_image=query_image,
-    reference_pool=reference_pool,
-    n_references=3,
-    use_entropy_weighting=True  # Weight by patch entropy
+    reference_images=reference_pool,
+    n_references=5,
 )
+
+# Or get the per-reference SW distance to the query as well:
+scored = selector.select_references_with_scores(query_image, reference_pool, n_references=5)
 
 selected_refs = [reference_pool[i] for i in ref_indices]
 ```
@@ -292,6 +293,7 @@ class CustomWALDO(WALDO):
 import json
 from pathlib import Path
 from tqdm import tqdm
+from waldo.metrics import compute_best_iou  # best IoU between any pred and any GT box
 
 results = []
 for i, (query, gt_boxes) in enumerate(tqdm(dataset)):
@@ -301,7 +303,7 @@ for i, (query, gt_boxes) in enumerate(tqdm(dataset)):
         'image_id': i,
         'pred_boxes': output['boxes'],
         'gt_boxes': gt_boxes,
-        'iou': compute_iou(output['boxes'], gt_boxes)
+        'iou': compute_best_iou(output['boxes'], gt_boxes)
     })
 
     # Save checkpoint every 100 samples
@@ -341,31 +343,38 @@ python scripts/download_datasets.py --dataset nova
 - Use smaller images (resize before processing)
 - Process in batches
 
-### DINOv2 CUDA Errors
+### DINOv3 backbone issues
 
-**Problem**: DINOv2 fails on GPU
+**Problem**: DINOv3 fails to load (it is gated on the HuggingFace Hub) or runs out of GPU memory.
 
 **Solution**:
+```bash
+# Accept the licence at huggingface.co/facebook/dinov3-vitb16-pretrain-lvd1689m, then:
+huggingface-cli login
+```
 ```python
-# Force CPU for DINOv2
+# Force CPU for the backbone:
 waldo = WALDO(..., device="cpu")
 ```
+If DINOv3 cannot be loaded, the selector automatically falls back to `facebook/dinov2-base`
+with a printed warning.
 
 ## Citation
 
 If you use WALDO in your research, please cite:
 
 ```bibtex
-@inproceedings{waldo2026,
-  title={WALDO: Wasserstein-Aligned Localisation via Differential Observations for Zero-Shot Medical Anomaly Detection},
-  author={...},
-  booktitle={Medical Image Computing and Computer Assisted Intervention (MICCAI)},
-  year={2026}
+@inproceedings{kainz2026waldo,
+  title     = {Wasserstein-Aligned Localisation for VLM-Based Distributional OOD
+               Detection in Medical Imaging},
+  author    = {Kainz, Bernhard and Mueller, Johanna P. and Baugh, Matthew M. G.
+               and Bercea, Cosmin I.},
+  booktitle = {Medical Image Computing and Computer Assisted Intervention (MICCAI)},
+  year      = {2026}
 }
 ```
 
 ## Support
 
 - **Issues**: https://github.com/bkainz/WALDO_MICCAI26_demo/issues
-- **Paper**: [Link to paper]
-- **Main Repository**: https://github.com/bkainz/InCOOD
+- **Disclaimer**: see [DISCLAIMER.md](DISCLAIMER.md) (AI-assisted distillation; intended use)

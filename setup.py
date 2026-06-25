@@ -25,6 +25,7 @@ setup(
         "Pillow>=9.0.0",
         "torch>=2.0.0",
         "torchvision>=0.15.0",
+        "transformers>=4.44.0",  # DINOv3-ViT-B/16 backbone (DINOv2 fallback on older versions)
         "openai>=1.0.0",
         "huggingface_hub>=0.19.0",
         "datasets>=2.14.0",
@@ -44,13 +45,8 @@ setup(
             "pydicom>=2.4.0",
         ],
     },
-    entry_points={
-        "console_scripts": [
-            "waldo-download=scripts.download_datasets:main",
-            "waldo-infer=scripts.run_inference:main",
-            "waldo-analyze=scripts.read_results:main",
-        ],
-    },
+    # The scripts/ directory is not packaged (it relies on a sys.path shim and is
+    # invoked as `python scripts/<name>.py ...`), so no console_scripts entry points.
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Science/Research",

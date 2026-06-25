@@ -3,9 +3,12 @@ numpy>=1.21.0
 scipy>=1.7.0
 Pillow>=9.0.0
 
-# Deep learning (for DINOv2 embeddings)
+# Deep learning (DINOv3-ViT-B/16 patch features for Wasserstein reference selection)
 torch>=2.0.0
 torchvision>=0.15.0
+# DINOv3 AutoModel support requires a recent transformers (>=4.53). Older versions
+# still work via the automatic DINOv2-base fallback in reference_selector.py.
+transformers>=4.44.0
 
 # VLM API clients
 openai>=1.0.0

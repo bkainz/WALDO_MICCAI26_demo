@@ -171,55 +171,8 @@ Response format:
 }"""
 
     def _differential_prompt(self, **kwargs) -> str:
-        """
-        Generate WALDO's differential prompting.
-
-        This is the core WALDO prompt that compares query against references.
-        """
-        if self.modality == "mri":
-            return """You are a medical imaging expert. Compare the QUERY image (first) with the REFERENCE images (subsequent).
-
-Task: Identify regions in the QUERY that appear DIFFERENT from the healthy references.
-
-Instructions:
-1. The reference images show NORMAL brain anatomy
-2. Look for regions in the query that deviate from this normal pattern:
-   - Intensity differences (hyper/hypointense areas)
-   - Mass effects or structural distortions
-   - Abnormal signal patterns
-   - Lesions, hemorrhages, or other pathologies
-3. Provide bounding boxes ONLY for regions that differ from the references
-4. Use normalized coordinates in range 0-1000
-
-Return JSON:
-{"boxes": [[x1, y1, x2, y2], ...], "description": "brief finding description"}
-
-If the query looks similar to references: {"boxes": [], "description": "no significant differences"}
-
-Important: Focus on DIFFERENCES from the references, not just any finding."""
-
-        else:  # CXR
-            return """You are a radiology expert. Compare the QUERY chest X-ray (first) with the HEALTHY REFERENCE images (subsequent).
-
-Task: Identify pathological regions in the QUERY that differ from healthy anatomy.
-
-Instructions:
-1. The reference images show NORMAL chest anatomy
-2. Look for abnormalities in the query that deviate from normal:
-   - Consolidations, infiltrates, or opacities
-   - Nodules, masses, or lesions
-   - Cardiomegaly or abnormal cardiac silhouette
-   - Pleural effusions or pneumothorax
-   - Abnormal mediastinal contours
-3. Provide bounding boxes for pathological regions
-4. Use normalized coordinates in range 0-1000
-
-Return JSON:
-{"boxes": [[x1, y1, x2, y2], ...], "description": "brief finding description"}
-
-If the query appears normal like references: {"boxes": [], "description": "no significant abnormalities"}
-
-Important: Focus on PATHOLOGICAL differences, not normal anatomical variants."""
+        """WALDO's core differential prompt (Stage 1), as quoted in the paper."""
+        return build_differential_prompt(self.modality)
 
 
 class ModelSpecificPrompts:
@@ -391,3 +344,59 @@ class PromptBuilder:
             })
 
         return [message]
+
+
+# ===========================================================================
+# Canonical WALDO prompts (used by waldo.WALDO)
+# ===========================================================================
+# The first sentence of the differential prompt is quoted verbatim from the
+# paper (Sec. "Differential Prompting and Aggregation"). In this demo the query
+# and reference are sent as two separate images (query first, reference second)
+# rather than a side-by-side composite, so we keep the paper wording and add an
+# explicit JSON output contract for robust parsing.
+
+_PAPER_DIFFERENTIAL = (
+    "Compare the patient scan (left) to the healthy reference (right). "
+    "Identify and localise any regions that appear abnormal, different, or "
+    "pathological. Return bounding box coordinates [x1, y1, x2, y2] normalised "
+    "to [0, 1000]."
+)
+
+
+def build_differential_prompt(modality: str = "mri") -> str:
+    """Stage-1 differential prompt comparing the query to a healthy reference."""
+    organ = "brain MRI" if modality.lower() == "mri" else "chest X-ray"
+    return f"""You are a medical imaging expert analysing a {organ}.
+
+You are shown TWO images: the FIRST is the patient scan to analyse; the SECOND is
+a healthy reference. {_PAPER_DIFFERENTIAL}
+
+Use the healthy reference to decide what is normal, then mark only the regions of
+the patient scan that deviate from it.
+
+Output JSON only:
+{{"abnormality_found": true/false, "boxes": [[x1, y1, x2, y2], ...], "description": "brief finding"}}
+If nothing differs from the reference: {{"abnormality_found": false, "boxes": []}}"""
+
+
+def build_refinement_prompt(modality: str, candidates: list) -> str:
+    """Stage-2 refinement prompt: confirm / refine / reject Stage-1 candidates."""
+    organ = "brain MRI" if modality.lower() == "mri" else "chest X-ray"
+    cand = [[round(float(c), 1) for c in box] for box in candidates]
+    return f"""You are a medical imaging expert analysing a {organ}.
+
+You are shown TWO images: the FIRST is the patient scan; the SECOND is a healthy
+reference. An initial differential analysis proposed candidate abnormal regions
+(coordinates normalised to [0, 1000]):
+
+{cand}
+
+For each candidate, compared against the healthy reference:
+1. CONFIRM it if it is genuinely abnormal (not a normal anatomical variant).
+2. REFINE its bounding box to tightly fit the abnormality.
+3. REJECT false positives.
+You may also add a clearly missed region.
+
+Output JSON only:
+{{"confirmed_boxes": [[x1, y1, x2, y2], ...], "description": "brief finding"}}
+If none are genuine abnormalities: {{"confirmed_boxes": []}}"""

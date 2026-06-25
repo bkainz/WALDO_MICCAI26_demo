@@ -7,8 +7,6 @@ Includes image normalization, augmentation, and coordinate transformations.
 import numpy as np
 from typing import Tuple, List, Optional
 from PIL import Image
-import torch
-from torchvision import transforms
 
 
 class ImagePreprocessor:
@@ -267,104 +265,79 @@ class CoordinateTransformer:
         return clipped
 
 
-class DINOv2FeatureExtractor:
+class DINOv3FeatureExtractor:
     """
-    Extract DINOv2 features for reference selection.
+    Extract DINOv3-ViT-B/16 patch features for reference selection.
 
-    Uses the official DINOv2 ViT model to extract dense patch features
-    for Wasserstein distance computation.
+    This mirrors the backbone used in the paper (DINOv3-ViT-B/16, 768-d patch
+    tokens). It is a thin convenience wrapper around the same loading/extraction
+    logic as :class:`waldo.reference_selector.WassersteinReferenceSelector`; if
+    DINOv3 cannot be loaded (it is gated on the HuggingFace Hub) it falls back to
+    DINOv2-base with a warning.
     """
 
     def __init__(
         self,
-        model_name: str = "dinov2_vitb14",
-        device: str = "cuda"
+        model_name: str = "facebook/dinov3-vitb16-pretrain-lvd1689m",
+        device: str = "cuda",
+        feature_size: int = 512,
+        allow_dinov2_fallback: bool = False,
     ):
-        """
-        Initialize DINOv2 feature extractor.
+        from transformers import AutoImageProcessor, AutoModel
 
-        Args:
-            model_name: DINOv2 model variant
-            device: Device to run model on
-        """
         self.device = device
-        self.model_name = model_name
-
-        # Load model
-        print(f"Loading {model_name}...")
-        self.model = torch.hub.load('facebookresearch/dinov2', model_name)
+        self.feature_size = feature_size
+        try:
+            self.processor = AutoImageProcessor.from_pretrained(model_name)
+            self.model = AutoModel.from_pretrained(model_name)
+            self.model_name = model_name
+        except Exception as exc:
+            fallback = "facebook/dinov2-base"
+            if not allow_dinov2_fallback:
+                raise RuntimeError(
+                    f"Could not load the paper backbone DINOv3 ('{model_name}'): {exc}\n"
+                    f"DINOv3 is gated; accept its licence and run `huggingface-cli login`, "
+                    f"or set allow_dinov2_fallback=True for a non-paper smoke test."
+                ) from exc
+            print(f"[WALDO] WARNING: DINOv3 '{model_name}' unavailable ({exc}); using "
+                  f"NON-PAPER backbone '{fallback}' (allow_dinov2_fallback=True).")
+            self.processor = AutoImageProcessor.from_pretrained(fallback)
+            self.model = AutoModel.from_pretrained(fallback)
+            self.model_name = fallback
         self.model = self.model.to(device)
         self.model.eval()
-
-        # Preprocessing
-        self.transform = transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean=[0.485, 0.456, 0.406],
-                std=[0.229, 0.224, 0.225]
-            )
-        ])
+        self.num_prefix_tokens = 1 + int(getattr(self.model.config, "num_register_tokens", 0) or 0)
 
     def extract_features(
         self,
         image: np.ndarray,
         return_cls_token: bool = False
     ) -> np.ndarray:
-        """
-        Extract patch features from image.
-
-        Args:
-            image: RGB image as numpy array (H, W, 3)
-            return_cls_token: If True, return CLS token; else return patch tokens
-
-        Returns:
-            Features array (for patch tokens: (N_patches, feature_dim))
-        """
-        # Convert to PIL and preprocess
-        img_pil = Image.fromarray((image * 255).astype(np.uint8))
-        img_tensor = self.transform(img_pil).unsqueeze(0).to(self.device)
-
-        # Extract features
+        """Extract CLS token or patch tokens ((N_patches, dim)) from an RGB image."""
+        import torch
+        img = (image * 255).astype(np.uint8) if image.max() <= 1.0 else image.astype(np.uint8)
+        inputs = self.processor(
+            images=img,
+            return_tensors="pt",
+            size={"height": self.feature_size, "width": self.feature_size},
+        )
+        inputs = {k: v.to(self.device) for k, v in inputs.items()}
         with torch.no_grad():
-            features = self.model.forward_features(img_tensor)
-
+            outputs = self.model(**inputs)
+        tokens = outputs.last_hidden_state[0]
         if return_cls_token:
-            # Return CLS token (global image representation)
-            cls_token = features['x_norm_clstoken']
-            return cls_token.cpu().numpy()[0]
-        else:
-            # Return patch tokens (dense representation)
-            patch_tokens = features['x_norm_patchtokens']
-            return patch_tokens.cpu().numpy()[0]
+            return tokens[0].float().cpu().numpy()
+        return tokens[self.num_prefix_tokens:, :].float().cpu().numpy()
 
-    def compute_patch_entropy(
-        self,
-        features: np.ndarray,
-        n_bins: int = 50
-    ) -> float:
-        """
-        Compute entropy of patch features for importance weighting.
+    @staticmethod
+    def compute_entropy_weights(features: np.ndarray) -> np.ndarray:
+        """Per-patch softmax-Shannon entropy weights (paper Eq.), normalised to sum 1."""
+        from .reference_selector import WassersteinReferenceSelector
+        return WassersteinReferenceSelector.compute_entropy_weights(features)
 
-        Higher entropy = more informative patches.
 
-        Args:
-            features: Patch features (N_patches, feature_dim)
-            n_bins: Number of bins for histogram
-
-        Returns:
-            Entropy value
-        """
-        # Compute histogram of feature magnitudes
-        magnitudes = np.linalg.norm(features, axis=1)
-        hist, _ = np.histogram(magnitudes, bins=n_bins, density=True)
-
-        # Compute entropy
-        hist = hist + 1e-10  # Avoid log(0)
-        entropy = -np.sum(hist * np.log(hist))
-
-        return entropy
+# Backwards-compatible alias (the demo previously exported a DINOv2 extractor).
+DINOv2FeatureExtractor = DINOv3FeatureExtractor
 
 
 def resize_with_boxes(

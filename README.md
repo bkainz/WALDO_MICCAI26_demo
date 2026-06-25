@@ -1,287 +1,184 @@
-# WALDO: Wasserstein-Aligned Localisation via Differential Observations
+# WALDO: Wasserstein-Aligned Localisation for VLM-Based Distributional OOD Detection
 
-A training-free framework for zero-shot medical anomaly localisation using vision-language models with optimal transport-based reference selection.
+A **training-free** framework for zero-shot medical anomaly localisation. WALDO selects
+anatomically-appropriate healthy references with an **entropy-weighted Sliced Wasserstein
+distance** over **DINOv3** patch distributions, then prompts a vision-language model (VLM)
+to localise regions of a query scan that differ from those references.
 
 <p align="center">
   <img src="figures/waldo_method_overview.png" width="100%">
 </p>
 
-## Key Features
+> **Disclaimer — distilled reference implementation.**
+> This repository is a clean, self-contained reference implementation of the WALDO method,
+> **distilled by Claude and Codex coding agents from a larger internal experimentation
+> codebase**. It faithfully implements the algorithm and hyper-parameters described in the
+> paper, but it is **not** the exact multi-script, multi-day cluster pipeline that produced
+> the published tables. Reproducing the paper numbers requires the full datasets, the
+> DINOv3-ViT-B/16 backbone (gated on the HuggingFace Hub), and VLM API access. The numbers
+> reported below are the **published paper results**; the JSON files in [`results/`](results/)
+> are the genuine full-run, per-image outputs that back them (NOVA *n*=906, VinDr-CXR *n*=949).
+> See [DISCLAIMER.md](DISCLAIMER.md).
 
-- **Zero-shot localisation**: No training on target domain required
-- **Differential prompting**: Compare query images against healthy references to identify anomalies
-- **Optimal transport reference selection**: Use Sliced Wasserstein Distance on DINOv2 embeddings to select diverse, relevant references
-- **Self-consistency aggregation**: Aggregate predictions across multiple reference sets using weighted NMS
+## Method
+
+WALDO proceeds in three stages (paper, Sec. *Method*):
+
+1. **Reference selection.** Extract DINOv3-ViT-B/16 patch tokens, weight each patch by its
+   softmax-Shannon entropy, and score every healthy reference by the entropy-weighted,
+   squared **Sliced Wasserstein** distance to the query (*M*=100 projections). Keep references
+   in the **Goldilocks zone** (30th–70th percentile of distance, α=0.3) and pick *K*=5 diverse
+   ones with a **Determinantal Point Process** (greedy log-det MAP).
+2. **Differential prompting (Stage 1).** For *K₁*=3 references, ask the VLM to compare the
+   patient scan against the healthy reference and box the regions that differ; aggregate with
+   confidence-weighted NMS (IoU=0.5). Per-reference confidence is `c·exp(−λ·SW)`, λ=0.1.
+3. **Refinement (Stage 2).** Re-present the Stage-1 candidates against *K₂*=2 further references
+   to confirm / refine / reject, then aggregate again.
+
+VLM sampling uses temperature 0.7 and top-p 0.95. Images are resized to 512×512 for feature
+extraction and 1024×1024 for VLM inference.
 
 ## Results
 
-### NOVA Brain MRI
+These are the **published paper results**. Mean with standard error subscript; mAP at
+IoU thresholds 0.30 / 0.50. Per-image JSONs are provided in [`results/`](results/) for the
+rows marked ✓.
 
-| Method | mAP@30 | mAP@50 | Avg IoU |
-|--------|--------|--------|---------|
-| Zero-shot (Qwen3-32B) | 53.3% | 30.0% | 32.9% |
-| **WALDO (Qwen3-32B)** | **63.3%** | **43.3%** | **39.2%** |
-| Improvement | +10.0% | +13.3% | +6.3% |
+### NOVA brain MRI (*n*=906, seed 42)
 
-### VinDr-CXR (n=949)
+| Model | Method | mAP@30 (%) | mAP@50 (%) | Avg IoU (%) | JSON |
+|---|---|---|---|---|:--:|
+| Qwen2.5-VL-72B | Zero-shot (rep.) | 36.4 | 23.4 | 23.6 | |
+| **Qwen2.5-VL-72B** | **WALDO** | **43.5** | **26.3** | **29.6** | ✓ |
+| GPT-4o | Zero-shot | 19.0 | 3.0 | 14.2 | |
+| GPT-4o | WALDO | 32.0 | 14.0 | 21.7 | |
+| Qwen3-VL-32B | Zero-shot | 20.4 | 13.8 | 13.8 | ✓ |
+| Qwen3-VL-32B | WALDO | 32.0 | 18.0 | 22.7 | |
+| Qwen3-VL-235B (MoE) | Zero-shot | 36.3 | 20.1 | 25.1 | ✓ |
+| Qwen3-VL-235B (MoE) | WALDO | 31.8 | 15.2 | 21.7 | ✓ |
+| Gemini-2.0-Flash | Zero-shot (rep.) | 18.1 | 6.4 | 15.2 | |
+| Gemini-2.0-Flash | WALDO | 38.0 | 10.0 | 24.5 | |
 
-| Method | mAP@30 | mAP@50 | Avg IoU |
-|--------|--------|--------|---------|
-| Zero-shot (Qwen3-32B) | 12.8% | 4.3% | 8.9% |
-| **WALDO (Qwen3-32B)** | **34.1%** | **10.7%** | **22.2%** |
-| Improvement | +21.3% | +6.4% | +13.3% |
+Primary result: WALDO with Qwen2.5-VL-72B reaches **43.5% mAP@30** (95% CI [40.4, 46.7]),
+a +19.5% relative improvement over the zero-shot reproduction (36.4%); a paired McNemar test
+on hit@30 confirms significance (*p*=1.8×10⁻⁶). GPT-4o and Gemini NOVA rows are *n*=50 API
+runs (hence their wider CIs in the paper); full per-image NOVA JSONs are shipped for the
+open Qwen models.
+
+### VinDr-CXR (*n*=949 with ≥1 annotated finding)
+
+| Model | Method | mAP@30 (%) | mAP@50 (%) | Avg IoU (%) | JSON |
+|---|---|---|---|---|:--:|
+| Qwen2.5-72B | Zero-shot | 18.7 | 4.0 | 14.4 | ✓ |
+| **Qwen2.5-72B** | **WALDO** | **22.3** | **5.7** | **18.2** | ✓ |
+| Qwen3-32B | Zero-shot | 12.8 | 4.3 | 8.9 | ✓ |
+| **Qwen3-32B** | **WALDO** | **34.1** | **10.7** | **22.2** | ✓ |
+| GPT-4o | Zero-shot | 3.3 | 0.4 | 2.3 | ✓ |
+| **GPT-4o** | **WALDO** | **10.9** | **1.5** | **9.4** | ✓ |
+
+**✓** = a per-image JSON for this row is shipped in [`results/`](results/). The tables
+above quote the **paper** values. Recomputing the shipped JSONs with `read_results.py`
+reproduces them to within run-to-run variance: every **WALDO** row matches to ≤0.1 pp, and
+the only baseline that differs by more is the Qwen2.5-72B CXR zero-shot cell, which the
+shipped run recomputes to **18.3%** vs the **18.7%** reported (GPT-4o CXR zero-shot
+recomputes to 3.4% vs 3.3%). These sub-0.5 pp gaps are stochastic VLM run variance and do
+not affect any conclusion.
 
 <p align="center">
   <img src="figures/nova_analysis_violin.png" width="48%">
+  <img src="figures/cxr_analysis_violin.png" width="48%">
 </p>
 
-*IoU distribution analysis by lesion size (left panels) and disease type (right panels). Left two: NOVA, Right two: VinDr-CXR*
-
-## Getting Started
-
-### Quick Installation
-
-```bash
-# Clone repository
-git clone https://github.com/bkainz/WALDO_MICCAI26_demo.git
-cd WALDO_MICCAI26_demo
-
-# Install with pip
-pip install -e .
-```
-
-### Quick Start (3 commands)
-
-```bash
-# 1. Download NOVA dataset
-python scripts/download_datasets.py --dataset nova --extract-healthy
-
-# 2. Run inference (requires API key)
-export OPENAI_API_KEY="your-key-here"
-python scripts/run_inference.py --dataset nova --model gpt-4o --n-samples 10
-
-# 3. Analyze results
-python scripts/read_results.py --dataset nova
-```
-
-### Try the Demo (No API Key Required)
-
-```bash
-# Run quickstart demo
-python examples/quickstart.py
-
-# This demonstrates:
-# - Dataset loading
-# - Wasserstein reference selection
-# - Differential prompting workflow
-```
-
-For detailed instructions, see [USAGE.md](USAGE.md).
-
+*IoU distribution stratified by lesion size and disease category (NOVA left, VinDr-CXR right).*
 
 ## Installation
 
-### Option 1: Install as Package (Recommended)
-
 ```bash
-pip install -e .
-
-# With optional dependencies
-pip install -e ".[viz,cxr]"  # For visualization and CXR preprocessing
+git clone https://github.com/bkainz/WALDO_MICCAI26_demo.git
+cd WALDO_MICCAI26_demo
+pip install -e .                 # core
+pip install -e ".[viz,cxr]"      # + visualisation and CXR DICOM support
 ```
 
-### Option 2: Manual Requirements
+The DINOv3-ViT-B/16 backbone (`facebook/dinov3-vitb16-pretrain-lvd1689m`) is **gated** on the
+HuggingFace Hub: accept its licence and run `huggingface-cli login`. If it cannot be loaded,
+the reference selector automatically falls back to `facebook/dinov2-base` with a warning.
+
+## Quick start
 
 ```bash
-pip install -r requirements.txt
-```
+# 1. Reference-selection demo on one NOVA sample (no API key; downloads DINOv3 + NOVA)
+python examples/quickstart.py
 
-## Utilities and Scripts
+# 2. Full inference (requires a VLM API key)
+export OPENAI_API_KEY="your-key"
+python scripts/run_inference.py --dataset nova --model gpt-4o --n-samples 10
 
-### Dataset Management
-
-**`scripts/download_datasets.py`** - Automated dataset downloading and preprocessing
-```bash
-# Download NOVA with healthy reference extraction
-python scripts/download_datasets.py --dataset nova --extract-healthy --n-healthy 50
-
-# Get VinDr-CXR download instructions
-python scripts/download_datasets.py --dataset cxr
-
-# Custom directories
-python scripts/download_datasets.py --dataset nova \\
-    --output-dir /data/nova --cache-dir /cache/hf
-```
-
-Features:
-- Automatic NOVA download from HuggingFace
-- Proper annotation-image alignment (critical for NOVA)
-- Healthy reference extraction
-- VinDr-CXR setup instructions
-
-### Inference
-
-**`scripts/run_inference.py`** - Complete end-to-end inference pipeline
-```bash
-# Run WALDO with GPT-4o
-python scripts/run_inference.py --dataset nova --model gpt-4o --api-key YOUR_KEY
-
-# Use Qwen via OpenRouter
-python scripts/run_inference.py --dataset nova \\
-    --model qwen/qwen-2.5-72b-instruct --openrouter --api-key YOUR_KEY
-
-# Advanced configuration
-python scripts/run_inference.py --dataset nova --model gpt-4o \\
-    --n-samples 100 --n-views 7 --n-references 5 --n-ref-pool 100
-```
-
-Features:
-- Automated dataset loading
-- Wasserstein reference selection
-- VLM API integration (OpenAI, OpenRouter)
-- Evaluation and metrics
-- Checkpoint saving
-
-### Analysis
-
-**`scripts/read_results.py`** - Comprehensive results analysis
-```bash
-# Analyze all pre-computed results
+# 3. Inspect the shipped paper results
 python scripts/read_results.py --dataset all
-
-# Analyze specific dataset
-python scripts/read_results.py --dataset nova --results-dir custom_results/
 ```
-
-Features:
-- mAP@30, mAP@50, Average IoU
-- 95% confidence intervals
-- Formatted result tables
-
-### Examples
-
-**`examples/quickstart.py`** - Interactive demo (no API key required)
-```bash
-python examples/quickstart.py --output-dir outputs/
-```
-
-Features:
-- Dataset loading demonstration
-- Wasserstein reference selection walkthrough
-- Visualization generation
-- Educational workflow explanation
-
-## Quick Start
-
-### Reading Pre-computed Results
-
-The `results/` directory contains raw predictions for all experiments in the paper:
-
-```bash
-# Analyze all results
-python scripts/read_results.py --dataset all
-
-# Analyze specific dataset
-python scripts/read_results.py --dataset nova
-python scripts/read_results.py --dataset cxr
-```
-
-### Using WALDO
 
 ```python
-from waldo import WALDO, WassersteinReferenceSelector
+from waldo import WALDO
 
-# Initialize with your VLM client
-waldo = WALDO(
-    vlm_client=your_openai_client,
-    model="qwen2.5-vl-72b",
-    n_views=5,
-    n_references=3,
-)
-
-# Localize anomalies
-result = waldo.localize(
-    query_image=query_rgb,
-    reference_pool=healthy_references,
-    modality="mri"  # or "cxr"
-)
-
-print(f"Found {len(result['boxes'])} anomaly regions")
+waldo = WALDO(vlm_client=your_openai_client, model="qwen2.5-vl-72b")  # see scripts/run_inference.py
+result = waldo.localize(query_rgb, healthy_references, modality="mri")
+print(result["boxes"])  # final boxes in 0-1000 normalised coordinates
 ```
 
-## Repository Structure
+## Datasets
+
+- **NOVA** (brain MRI) downloads automatically from HuggingFace (`c-i-ber/Nova`). Note: the
+  parquet annotations are **not** sorted by filename while the images are — the loaders build
+  the correct filename→index mapping (`scripts/download_datasets.py`, `waldo/data_loader.py`).
+- **VinDr-CXR** requires credentialed PhysioNet access; `scripts/download_datasets.py --dataset cxr`
+  prints setup instructions. "No finding" cases are used as healthy references.
+
+## Repository structure
 
 ```
 waldo-demo/
-├── waldo/                         # Core WALDO implementation
-│   ├── __init__.py
-│   ├── waldo.py                   # Main WALDO class
-│   ├── reference_selector.py      # SWD-based reference selection
-│   └── metrics.py                 # Evaluation metrics
-├── scripts/
-│   └── read_results.py            # Results reader and analyzer
-├── results/                        # Raw experimental results
-│   ├── nova/                      # NOVA brain MRI results (2 files)
-│   └── cxr/                       # VinDr-CXR results (6 files)
-├── figures/
-│   ├── waldo_method_overview.png  # Method diagram
-│   ├── nova_analysis_violin.png   # NOVA IoU analysis
-│   ├── cxr_analysis_violin.png    # CXR IoU analysis
-│   ├── disease_examples_grid.pdf  # Disease type examples
-│   ├── prompts/                   # Prompt examples (3 files)
-│   └── qualitative_samples/       # Localisation examples
-│       ├── nova/                  # 30 brain MRI samples
-│       └── cxr/                   # 30 chest X-ray samples
-└── requirements.txt
+├── waldo/
+│   ├── reference_selector.py   # DINOv3 + entropy-weighted Sliced Wasserstein + Goldilocks + DPP
+│   ├── waldo.py                # two-stage differential prompting + confidence-weighted NMS
+│   ├── prompting.py            # paper differential / refinement prompts
+│   ├── preprocessing.py        # DINOv3 feature extractor + coordinate transforms
+│   ├── data_loader.py          # NOVA / VinDr-CXR loaders (with NOVA alignment fix)
+│   ├── metrics.py              # IoU, mAP@30/50, bootstrap CI
+│   ├── batch_inference.py      # checkpointing / rate limiting utilities
+│   └── visualization.py        # bounding-box drawing
+├── scripts/                    # download_datasets.py, run_inference.py, read_results.py
+├── examples/quickstart.py
+├── results/                    # genuine full-run per-image JSONs (NOVA n=906, CXR n=949)
+│   ├── nova/                   # 4 files (Qwen2.5-72B WALDO; Qwen3-32B/235B zero-shot; 235B WALDO)
+│   └── cxr/                    # 6 files (zero-shot + WALDO for GPT-4o, Qwen2.5-72B, Qwen3-32B)
+├── figures/                    # method diagram, violin plots, 30 NOVA + 30 CXR qualitative samples
+├── DISCLAIMER.md
+├── USAGE.md
+├── requirements.txt
+└── setup.py
 ```
 
-## Results File Format
+## Results file format
 
-Each JSON results file contains:
-
-```json
-{
-  "results": [
-    {
-      "image_id": "...",
-      "iou": 0.52,
-      "hit_30": true,
-      "hit_50": true,
-      "n_pred": 2,
-      "n_gt": 3,
-      "pred_boxes": [[x1, y1, x2, y2], ...],
-      "gt_boxes": [[x1, y1, x2, y2], ...]
-    },
-    ...
-  ]
-}
-```
-
-## Method Overview
-
-WALDO consists of three stages:
-
-1. **Reference Selection**: Use entropy-weighted Sliced Wasserstein Distance on DINOv2 patch embeddings to select diverse, anatomically-aligned healthy references
-
-2. **Differential Prompting**: Query a VLM with the patient image and selected references, asking it to identify regions that differ from normal anatomy
-
-3. **Self-Consistency Aggregation**: Repeat with different reference subsets and aggregate predictions using weighted NMS
+NOVA JSONs contain `config`, `metrics` (mAP@30/50, avg IoU, std-err, 95% CI), and
+`detailed_results` (per-image `filename`, `iou`, `hit_30`, `hit_50`). VinDr-CXR JSONs
+additionally contain `pred_boxes`, `gt_boxes`, and raw VLM `responses` per image.
 
 ## Citation
 
 ```bibtex
-@article{kainz2026wasserstein,
-  title={Wasserstein-Aligned Localisation for VLM-Based Distributional OOD Detection in Medical Imaging},
-  author={Bernhard Kainz and Johanna P. Mueller and Matthew Baugh and Cosmin I. Bercea},
-  journal={arXiv preprint arXiv:2605.05161},
-  year={2026},
-  url={https://arxiv.org/abs/2605.05161},
-  eprint={2605.05161},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV}
+@inproceedings{kainz2026waldo,
+  title     = {Wasserstein-Aligned Localisation for VLM-Based Distributional OOD
+               Detection in Medical Imaging},
+  author    = {Kainz, Bernhard and Mueller, Johanna P. and Baugh, Matthew M. G.
+               and Bercea, Cosmin I.},
+  booktitle = {Medical Image Computing and Computer Assisted Intervention (MICCAI)},
+  year      = {2026}
 }
 ```
 
 ## License
 
-MIT License
+MIT License. See [DISCLAIMER.md](DISCLAIMER.md) for notes on the AI-assisted distillation
+of this code and on the intended (research / triage) use of the method.

@@ -57,7 +57,8 @@ from .data_loader import (
 from .preprocessing import (
     ImagePreprocessor,
     CoordinateTransformer,
-    DINOv2FeatureExtractor,
+    DINOv3FeatureExtractor,
+    DINOv2FeatureExtractor,  # backwards-compatible alias of DINOv3FeatureExtractor
     resize_with_boxes
 )
 
@@ -106,6 +107,7 @@ __all__ = [
     # Preprocessing
     "ImagePreprocessor",
     "CoordinateTransformer",
+    "DINOv3FeatureExtractor",
     "DINOv2FeatureExtractor",
     "resize_with_boxes",
 

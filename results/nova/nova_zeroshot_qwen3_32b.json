@@ -1,0 +1,5460 @@
+{
+  "config": {
+    "model": "qwen3-vl-32b",
+    "method": "zero-shot",
+    "dataset": "nova",
+    "n_refs": 50,
+    "seed": 42,
+    "n_samples": 906
+  },
+  "metrics": {
+    "mAP@30": 20.41942604856512,
+    "mAP@50": 13.79690949227373,
+    "avg_iou": 13.83658141243098,
+    "std_err": 1.3403637899089942,
+    "ci_95": [
+      17.660044150110377,
+      22.958057395143488
+    ],
+    "n_samples": 906
+  },
+  "note": "Full NOVA test set (906 samples, seed 42), produced by the WALDO experiment pipeline that backs Table 1 of the paper. detailed_results gives per-image best-IoU and hit@30/@50; metrics gives mAP@30/@50 (%), avg IoU (%), standard error and 95% bootstrap CI.",
+  "detailed_results": [
+    {
+      "filename": "case0183",
+      "iou": 0.5509656365658565,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0183",
+      "iou": 0.613353403449132,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0183",
+      "iou": 0.5846907718945326,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0016",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0016",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0016",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0016",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0276",
+      "iou": 0.8591827454827347,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0276",
+      "iou": 0.7669069496630625,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0276",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0276",
+      "iou": 0.14173401020314216,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0276",
+      "iou": 0.41670865281250274,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0018",
+      "iou": 0.5219907199471194,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0018",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0018",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0062",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0062",
+      "iou": 0.16571980676176018,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0062",
+      "iou": 0.15205660662599954,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0062",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0158",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0158",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0158",
+      "iou": 0.797463890604717,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0158",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0158",
+      "iou": 0.7151008294330347,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0221",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0221",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0221",
+      "iou": 0.13549036429639771,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0104",
+      "iou": 0.46902739290215795,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0263",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0263",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0196",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0003",
+      "iou": 0.5902043340472766,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0147",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0246",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.6037281322209975,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.03697535307814143,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.05269404172933702,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0096",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0096",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0043",
+      "iou": 0.3580665355822919,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0043",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0043",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0043",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0043",
+      "iou": 0.026179874839783252,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0274",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0274",
+      "iou": 0.6760815168979498,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0172",
+      "iou": 0.8468218443545165,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0049",
+      "iou": 0.5558999844748005,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0049",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0002",
+      "iou": 0.542126472421519,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0076",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0076",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0076",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0006",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0006",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0041",
+      "iou": 0.8146839482484683,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0041",
+      "iou": 0.43621607912025123,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0041",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0041",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0041",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0041",
+      "iou": 0.18481071282053138,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0041",
+      "iou": 0.17857553431245832,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0138",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0035",
+      "iou": 0.21238512651442704,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0035",
+      "iou": 0.06146307916857112,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0249",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0244",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0118",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0118",
+      "iou": 0.5587840791554034,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0045",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0045",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0045",
+      "iou": 0.04277088377514487,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0045",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0045",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0036",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0036",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0130",
+      "iou": 0.4112018308244907,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0130",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0130",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0130",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0130",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0077",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0089",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0089",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0013",
+      "iou": 0.7121228778656139,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0013",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0013",
+      "iou": 0.6966870646117992,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0013",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0013",
+      "iou": 0.6685076215161982,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0133",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0133",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0133",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0008",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0091",
+      "iou": 0.13274129898019424,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0091",
+      "iou": 0.6622580697278281,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0091",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0091",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0091",
+      "iou": 0.6319610985581688,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0091",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0091",
+      "iou": 0.7358222570439732,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0209",
+      "iou": 0.49412865800572514,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0209",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0209",
+      "iou": 0.1523821267916161,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0209",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0219",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0219",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0219",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0219",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0219",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0219",
+      "iou": 0.5795469738963493,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0219",
+      "iou": 0.21395037171493098,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0219",
+      "iou": 0.2236903931492701,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0180",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0230",
+      "iou": 0.6406990356021128,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0023",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0069",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0069",
+      "iou": 0.6405966153130347,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0069",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0069",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0241",
+      "iou": 0.4690539907178808,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0241",
+      "iou": 0.4154058437192141,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0241",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0127",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0127",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0127",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0171",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0207",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0212",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0212",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0212",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0212",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0073",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0073",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0073",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0073",
+      "iou": 0.926552845807177,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0073",
+      "iou": 0.1035388038571703,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0129",
+      "iou": 0.438134011456414,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0025",
+      "iou": 0.6069463079569023,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0025",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0217",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0217",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0217",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0080",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0080",
+      "iou": 0.32861986506091173,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0080",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0080",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0080",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0080",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0137",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0137",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0137",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0137",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0137",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0075",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0075",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0075",
+      "iou": 0.2911062906619267,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0075",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0075",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0075",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0197",
+      "iou": 0.025741255180445698,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0197",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0197",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0262",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0262",
+      "iou": 0.158376453047218,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0262",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0262",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0262",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0061",
+      "iou": 0.8466769405692277,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0061",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0182",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0182",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0272",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0024",
+      "iou": 0.18350643621766255,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0024",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0184",
+      "iou": 0.8556915594757867,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0184",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0184",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0184",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0184",
+      "iou": 0.24873196197105557,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0184",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0281",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0281",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0149",
+      "iou": 0.7649842382932982,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0149",
+      "iou": 0.8047078880755637,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0149",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0149",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0149",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0149",
+      "iou": 0.9177963723937673,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0159",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0159",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0264",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0164",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0164",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0164",
+      "iou": 0.3572063802078873,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0164",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0164",
+      "iou": 0.2666430336222552,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0198",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0198",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0198",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0198",
+      "iou": 0.7021919423290506,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0198",
+      "iou": 0.6973192573637904,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0198",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0198",
+      "iou": 0.7571183601138798,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0082",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0082",
+      "iou": 0.3060099612476475,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0082",
+      "iou": 0.553745217205871,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0082",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0082",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0082",
+      "iou": 0.03794396272748546,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0082",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0093",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0093",
+      "iou": 0.27396070978482645,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0093",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0093",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0093",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0093",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0093",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0093",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0093",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0139",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0139",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0005",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0005",
+      "iou": 0.23655360490413815,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0005",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0214",
+      "iou": 0.9174625524597879,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0214",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0214",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0214",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0214",
+      "iou": 0.25031065045302764,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0214",
+      "iou": 0.5065118740704576,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0187",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0187",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0187",
+      "iou": 0.02295509188115765,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0148",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0148",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0169",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0268",
+      "iou": 0.21551724137163067,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0268",
+      "iou": 0.2903213534258892,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0268",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0268",
+      "iou": 0.28638872232217183,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0268",
+      "iou": 0.37252530820971386,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0123",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0123",
+      "iou": 0.11952637834738161,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0029",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0218",
+      "iou": 0.7393585921185003,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0050",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0050",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0050",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0050",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0054",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0121",
+      "iou": 0.80164620973677,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0121",
+      "iou": 0.2579215989128527,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0121",
+      "iou": 0.8273006019121026,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0084",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0084",
+      "iou": 0.6389568424335705,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0047",
+      "iou": 0.6361548778591063,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0047",
+      "iou": 0.8311293124265523,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0047",
+      "iou": 0.7152787256741917,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0047",
+      "iou": 0.679244270427582,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0047",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0047",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0047",
+      "iou": 0.7942940720626132,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0193",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0038",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0038",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0038",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0240",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0240",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0240",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0240",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0240",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0240",
+      "iou": 0.02987554827734042,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0155",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0155",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0132",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0132",
+      "iou": 0.42906669723825547,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0132",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0132",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0132",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0132",
+      "iou": 0.1792734860419466,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0132",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0132",
+      "iou": 0.5421120365188492,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0132",
+      "iou": 0.1646186009508212,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0226",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0226",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0226",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0090",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0120",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0122",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0122",
+      "iou": 0.230462081531783,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0114",
+      "iou": 0.5107591834563102,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0114",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0163",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0163",
+      "iou": 0.8993055554812082,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0163",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0074",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0074",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0232",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0232",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0030",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0030",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0112",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0112",
+      "iou": 0.032991001021966455,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0213",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0213",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0213",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0012",
+      "iou": 0.5000766761901142,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0012",
+      "iou": 0.48484842088700475,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0012",
+      "iou": 0.5391334136025402,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0012",
+      "iou": 0.6388250868058144,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0012",
+      "iou": 0.2027982850532349,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0012",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0216",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0216",
+      "iou": 0.7337229693689928,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0124",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0124",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0124",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0026",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0166",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0166",
+      "iou": 0.6134502113653818,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0166",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0231",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0136",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0136",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0136",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0136",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0136",
+      "iou": 0.3015480163808932,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0259",
+      "iou": 0.24338811393464485,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0267",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0267",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0267",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0222",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0222",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0222",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0222",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0222",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0222",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0113",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0113",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0113",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0247",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0261",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0261",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0261",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0261",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0034",
+      "iou": 0.48222369245040847,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0034",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0034",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0034",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0034",
+      "iou": 0.1767254291414544,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0037",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0131",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0131",
+      "iou": 0.3852527200758432,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0131",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0192",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0192",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0165",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0106",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0106",
+      "iou": 0.06601726787977076,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0106",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0106",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0140",
+      "iou": 0.6829495474911805,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0256",
+      "iou": 0.4527432334290263,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0108",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0108",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0108",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0108",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0044",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0111",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0088",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0088",
+      "iou": 0.25913697789933193,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0088",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0088",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0032",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0032",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0220",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0220",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0260",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0161",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0161",
+      "iou": 0.3365581394737358,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0161",
+      "iou": 0.27324464258141357,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0161",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0161",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0021",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0021",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0028",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0224",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0224",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0269",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0239",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0239",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0239",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0239",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0239",
+      "iou": 0.3867847419760397,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0027",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0027",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0039",
+      "iou": 0.8810110440537957,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0039",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0083",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0128",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0128",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0128",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0128",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0107",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0115",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0115",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0115",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0115",
+      "iou": 0.40923123460405664,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0115",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0115",
+      "iou": 0.3493484561930216,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0115",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0278",
+      "iou": 0.6011227081017888,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0278",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0135",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0135",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0135",
+      "iou": 0.23686931040834075,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0135",
+      "iou": 0.05844856529979764,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0135",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0135",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0085",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0085",
+      "iou": 0.7197165595438212,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0085",
+      "iou": 0.04920824258391392,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0085",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0175",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0175",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0175",
+      "iou": 0.35047795741683835,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0157",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0157",
+      "iou": 0.4760471382256204,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0157",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0189",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0189",
+      "iou": 0.0034703775278763205,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0189",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0189",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0189",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0189",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0189",
+      "iou": 0.07505640709984593,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0189",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0253",
+      "iou": 0.6058436120886441,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0236",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0236",
+      "iou": 0.005387824222603143,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0236",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0177",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0177",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0177",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0177",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0248",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0105",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0270",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0270",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0270",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0270",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0170",
+      "iou": 0.7381155123506544,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0170",
+      "iou": 0.22942462219875798,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0170",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0097",
+      "iou": 0.5643208643389594,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0097",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0097",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0097",
+      "iou": 0.6500574134200654,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0097",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0097",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0042",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0010",
+      "iou": 0.6852507444004742,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0010",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0057",
+      "iou": 0.5688473325693169,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0057",
+      "iou": 0.7856979794677548,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0046",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0151",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0151",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0151",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0151",
+      "iou": 0.522486056978602,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0151",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0151",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0151",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0009",
+      "iou": 0.26944605275809774,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0009",
+      "iou": 0.0545001231351606,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0009",
+      "iou": 0.6723080048885779,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0009",
+      "iou": 0.1348287997478236,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0056",
+      "iou": 0.3232387198548865,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0056",
+      "iou": 0.3169407506283645,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0056",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0056",
+      "iou": 0.014365534616232474,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0056",
+      "iou": 0.5164363900029404,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0152",
+      "iou": 0.6115956414173368,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0174",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0174",
+      "iou": 0.08830907978123509,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0174",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0174",
+      "iou": 0.0083897516901681,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0174",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0022",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0022",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0204",
+      "iou": 0.00888020132836117,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0204",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0258",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0266",
+      "iou": 0.49697419889971073,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0238",
+      "iou": 0.6805864569096842,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0238",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0060",
+      "iou": 0.7316934227366747,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0060",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0060",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0060",
+      "iou": 0.30883461293705167,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0191",
+      "iou": 0.7059122023454314,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0191",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0191",
+      "iou": 0.37724074263896523,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0191",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0191",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0191",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0191",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0141",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0141",
+      "iou": 0.12368055818443112,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0141",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0141",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0160",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0160",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0160",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0142",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0142",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0142",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0277",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0277",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0277",
+      "iou": 0.7692957486061734,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0277",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0059",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0059",
+      "iou": 0.3201764056351293,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0059",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0059",
+      "iou": 0.9310354324638052,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0059",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0059",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0059",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0059",
+      "iou": 0.03836412755689864,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0051",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0051",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0051",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0051",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0051",
+      "iou": 0.20232094368914774,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0051",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0051",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0051",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0007",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0007",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0081",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0081",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0081",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0081",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0081",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0081",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0081",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0199",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0173",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0173",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0233",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0233",
+      "iou": 0.3445202852197889,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0233",
+      "iou": 0.47316639148203216,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0233",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0233",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0031",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0031",
+      "iou": 0.5432210555275157,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0031",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0223",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0223",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0098",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0098",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0098",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0098",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0098",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0098",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0098",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0098",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0098",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0001",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0257",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0202",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0202",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0065",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0065",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0065",
+      "iou": 0.01665581690491551,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0079",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0079",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0017",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0225",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0225",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0225",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0225",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0271",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0271",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0271",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0156",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0156",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0156",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0156",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0201",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0201",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0178",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0178",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0178",
+      "iou": 0.8166200487936496,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0103",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0103",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0254",
+      "iou": 0.48025905750810227,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0254",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0254",
+      "iou": 0.2361825192564887,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0188",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0188",
+      "iou": 0.8558515353481385,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0188",
+      "iou": 0.8324111150578013,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0188",
+      "iou": 0.332621047592459,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0188",
+      "iou": 0.22259696474433885,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0188",
+      "iou": 0.037488516272712616,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0011",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0102",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0102",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0102",
+      "iou": 0.3824159654323569,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0102",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0102",
+      "iou": 0.7365511818456296,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0102",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0102",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0102",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0102",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0102",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0205",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0205",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0019",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0019",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0019",
+      "iou": 0.5725600726387146,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0019",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0235",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0145",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0176",
+      "iou": 0.17090746106486987,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0176",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0176",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0176",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0176",
+      "iou": 0.2371772203246667,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0014",
+      "iou": 0.7512940749888534,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0014",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0014",
+      "iou": 0.5806284548964077,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0033",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0033",
+      "iou": 0.26846846839648536,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0033",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0190",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0190",
+      "iou": 0.18556903429237262,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0190",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0190",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0071",
+      "iou": 0.814305597280785,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0071",
+      "iou": 0.4597287812119561,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0071",
+      "iou": 0.5007922762199337,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0071",
+      "iou": 0.7059800664171001,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0071",
+      "iou": 0.8167361317369309,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0071",
+      "iou": 0.21440989994687445,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0071",
+      "iou": 0.5782558985159472,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0071",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0206",
+      "iou": 0.9355865204084641,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0101",
+      "iou": 0.5458772785135857,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0234",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0234",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0234",
+      "iou": 0.3569637933365084,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0265",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0265",
+      "iou": 0.7595309642377357,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0200",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0125",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0125",
+      "iou": 0.3006775819803715,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0125",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0275",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0275",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0064",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0064",
+      "iou": 0.09237459435949517,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0064",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0064",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0064",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0064",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0064",
+      "iou": 0.0511268726706767,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0064",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0064",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0064",
+      "iou": 0.19717887437637155,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0092",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0092",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0092",
+      "iou": 0.5000468643773086,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0092",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0092",
+      "iou": 0.7394746989212397,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0092",
+      "iou": 0.8028353551041099,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0092",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0053",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0053",
+      "iou": 0.15591996133465455,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0053",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0250",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0250",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0250",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0250",
+      "iou": 0.11526491279725702,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0250",
+      "iou": 0.2753673748363738,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0068",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0068",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0068",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0068",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0068",
+      "iou": 0.36925258352777424,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0068",
+      "iou": 0.465856735484928,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0068",
+      "iou": 0.7866167554970596,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0154",
+      "iou": 0.010828025477522782,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0154",
+      "iou": 0.12088646075847867,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0004",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0004",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0004",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0004",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0004",
+      "iou": 0.6654022275788302,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0004",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0168",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0203",
+      "iou": 0.7934083920614468,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0203",
+      "iou": 0.05645675079464421,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0203",
+      "iou": 0.9261143612580768,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0242",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0242",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0237",
+      "iou": 0.5580264947267761,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0237",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0237",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0237",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0237",
+      "iou": 0.4475984139059645,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0052",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0052",
+      "iou": 0.4684778933419687,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0052",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0052",
+      "iou": 0.25568186874233023,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0052",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0052",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0255",
+      "iou": 0.4453235887341828,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0255",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0255",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0134",
+      "iou": 0.430373360225425,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0243",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0243",
+      "iou": 0.8036101561078047,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0243",
+      "iou": 0.40257617226612824,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0243",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0273",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0273",
+      "iou": 0.34943043858586126,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0273",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0273",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0273",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0273",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0228",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0228",
+      "iou": 0.3945433751137413,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0228",
+      "iou": 0.33139957229347006,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0228",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0167",
+      "iou": 0.5729513723441816,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0116",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0116",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0116",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0116",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0040",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0040",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0040",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0179",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0179",
+      "iou": 0.9031826707684101,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0179",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0279",
+      "iou": 0.7221355222216663,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0279",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0279",
+      "iou": 0.7936644116123243,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0279",
+      "iou": 0.8517778155825843,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0279",
+      "iou": 0.8343373838996255,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.3168938186422998,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.19319879602737167,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.6600664026563505,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.3730729295704607,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0099",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0162",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0162",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0162",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0144",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0144",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0087",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0087",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0087",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0067",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0067",
+      "iou": 0.6036698124012199,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0067",
+      "iou": 0.7967395521847194,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0067",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0185",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0185",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0185",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0185",
+      "iou": 0.16488549618058387,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0185",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0185",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0185",
+      "iou": 0.7752461048094529,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0185",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0020",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0020",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0020",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0048",
+      "iou": 0.037628365967494574,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0048",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0048",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0066",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0066",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0110",
+      "iou": 0.45507700582823324,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0110",
+      "iou": 0.0961562165596728,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0215",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0215",
+      "iou": 0.3965466033726484,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0215",
+      "iou": 0.4892742970542397,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0227",
+      "iou": 0.8454126706372076,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0252",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0252",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0186",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0210",
+      "iou": 0.09840402987659069,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0072",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0072",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0280",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0229",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0229",
+      "iou": 0.3724364465573619,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0229",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0245",
+      "iou": 0.22189216346552162,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0245",
+      "iou": 0.04916111429500988,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0245",
+      "iou": 0.13486409712832512,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0208",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.5937715233883676,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.6300892461691848,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.6953247593516203,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.6560968736487375,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.5494496639054993,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.029482749163091553,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.11520204982425344,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0100",
+      "iou": 0.3978137513636965,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0194",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0194",
+      "iou": 0.23864873493030409,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0194",
+      "iou": 0.8400371447921408,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0194",
+      "iou": 0.7883652816254654,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0153",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0153",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0055",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0055",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0055",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0055",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0015",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0015",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0094",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0094",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0094",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0094",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0094",
+      "iou": 0.13704500423015784,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0094",
+      "iou": 0.7128580615347466,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0109",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0119",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0119",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0119",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0058",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0058",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0078",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0078",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0078",
+      "iou": 0.6788534536460229,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0143",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0143",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0143",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0146",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0146",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0146",
+      "iou": 0.10928365076339927,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0251",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0251",
+      "iou": 0.7186223152014847,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0251",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0251",
+      "iou": 0.6728685691158071,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0251",
+      "iou": 0.7167074050702384,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0251",
+      "iou": 0.932656143926022,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0063",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0063",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0063",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0063",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0063",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0063",
+      "iou": 0.3088288132869281,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0063",
+      "iou": 0.08903336184455977,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0063",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0195",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0195",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0095",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0095",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0095",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0095",
+      "iou": 0.05956737552995944,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0117",
+      "iou": 0.09178535237911131,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0117",
+      "iou": 0.3494092083300607,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0117",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0181",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0086",
+      "iou": 0.3163054275057463,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0086",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0086",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0211",
+      "iou": 0.23780982946988635,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0211",
+      "iou": 0.4238214522909632,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0211",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0211",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0211",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0150",
+      "iou": 0.6426420629083046,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0150",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0150",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0150",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0126",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0126",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    }
+  ]
+}
