@@ -44,26 +44,30 @@ These are the **published paper results**. Mean with standard error subscript; m
 IoU thresholds 0.30 / 0.50. Per-image JSONs are provided in [`results/`](results/) for the
 rows marked ✓.
 
-### NOVA brain MRI (*n*=906, seed 42)
+### NOVA brain MRI (seed 42)
 
-| Model | Method | mAP@30 (%) | mAP@50 (%) | Avg IoU (%) | JSON |
-|---|---|---|---|---|:--:|
-| Qwen2.5-VL-72B | Zero-shot (rep.) | 36.4 | 23.4 | 23.6 | |
-| **Qwen2.5-VL-72B** | **WALDO** | **43.5** | **26.3** | **29.6** | ✓ |
-| GPT-4o | Zero-shot | 19.0 | 3.0 | 14.2 | |
-| GPT-4o | WALDO | 32.0 | 14.0 | 21.7 | |
-| Qwen3-VL-32B | Zero-shot | 20.4 | 13.8 | 13.8 | ✓ |
-| Qwen3-VL-32B | WALDO | 32.0 | 18.0 | 22.7 | |
-| Qwen3-VL-235B (MoE) | Zero-shot | 36.3 | 20.1 | 25.1 | ✓ |
-| Qwen3-VL-235B (MoE) | WALDO | 31.8 | 15.2 | 21.7 | ✓ |
-| Gemini-2.0-Flash | Zero-shot (rep.) | 18.1 | 6.4 | 15.2 | |
-| Gemini-2.0-Flash | WALDO | 38.0 | 10.0 | 24.5 | |
+`n` is the evaluation sample size: 906 (full NOVA test set) for the open Qwen/Gemini full
+runs; 50 for the API-cost-limited rows (which is why those rows have wider CIs in the paper).
+
+| Model | Method | n | mAP@30 (%) | mAP@50 (%) | Avg IoU (%) | JSON |
+|---|---|:--:|---|---|---|:--:|
+| Qwen2.5-VL-72B | Zero-shot (rep.) | 906 | 36.4 | 23.4 | 23.6 | ✓ |
+| **Qwen2.5-VL-72B** | **WALDO** | 906 | **43.5** | **26.3** | **29.6** | ✓ |
+| GPT-4o | Zero-shot | 50 | 19.0 | 3.0 | 14.2 | † |
+| GPT-4o | WALDO | 50 | 32.0 | 14.0 | 21.7 | † |
+| Qwen3-VL-32B | Zero-shot | 906 | 20.4 | 13.8 | 13.8 | ✓ |
+| Qwen3-VL-32B | WALDO | 50 | 32.0 | 18.0 | 22.7 | ✓ |
+| Qwen3-VL-235B (MoE) | Zero-shot | 906 | 36.3 | 20.1 | 25.1 | ✓ |
+| Qwen3-VL-235B (MoE) | WALDO | 906 | 31.8 | 15.2 | 21.7 | ✓ |
+| Gemini-2.0-Flash | Zero-shot (rep.) | 906 | 18.1 | 6.4 | 15.2 | ✓ |
+| Gemini-2.0-Flash | WALDO | 50 | 38.0 | 10.0 | 24.5 | ✓ |
 
 Primary result: WALDO with Qwen2.5-VL-72B reaches **43.5% mAP@30** (95% CI [40.4, 46.7]),
 a +19.5% relative improvement over the zero-shot reproduction (36.4%); a paired McNemar test
-on hit@30 confirms significance (*p*=1.8×10⁻⁶). GPT-4o and Gemini NOVA rows are *n*=50 API
-runs (hence their wider CIs in the paper); full per-image NOVA JSONs are shipped for the
-open Qwen models.
+on hit@30 confirms significance (*p*=1.8×10⁻⁶). Per-image JSONs are shipped for every ✓ row
+and recompute to the value shown. **†** GPT-4o NOVA figures are the *mean of multiple n=50
+API runs* (e.g. WALDO 32.0 is the mean of 30.0 and 34.0), so no single per-image file equals
+the reported value — these rows are therefore not shipped as JSONs.
 
 ### VinDr-CXR (*n*=949 with ≥1 annotated finding)
 
@@ -152,7 +156,7 @@ waldo-demo/
 ├── scripts/                    # download_datasets.py, run_inference.py, read_results.py
 ├── examples/quickstart.py
 ├── results/                    # genuine full-run per-image JSONs (NOVA n=906, CXR n=949)
-│   ├── nova/                   # 4 files (Qwen2.5-72B WALDO; Qwen3-32B/235B zero-shot; 235B WALDO)
+│   ├── nova/                   # 8 files (zero-shot + WALDO for Qwen2.5-72B, Qwen3-32B, Qwen3-235B, Gemini)
 │   └── cxr/                    # 6 files (zero-shot + WALDO for GPT-4o, Qwen2.5-72B, Qwen3-32B)
 ├── figures/                    # method diagram, violin plots, 30 NOVA + 30 CXR qualitative samples
 ├── DISCLAIMER.md

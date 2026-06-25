@@ -29,8 +29,9 @@ small, readable, runnable package.
   [`results/`](results/) are the **genuine full-run, per-image outputs** that back them
   (NOVA *n*=906; VinDr-CXR *n*=949). They are provided so the reported metrics can be
   recomputed directly (`python scripts/read_results.py --dataset all`).
-- GPT-4o and Gemini NOVA rows in the paper are *n*=50 API runs (reflected in their wider
-  confidence intervals); full per-image NOVA JSONs are shipped for the open Qwen models.
+- Some NOVA rows are *n*=50 API runs (wider confidence intervals): per-image JSONs are
+  shipped for every NOVA row except GPT-4o, whose reported figures (zero-shot 19.0 /
+  WALDO 32.0) are the mean of multiple n=50 API runs and so are not shipped as single files.
 
 ### Known, intentional differences (full transparency)
 
