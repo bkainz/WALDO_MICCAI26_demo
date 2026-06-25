@@ -56,11 +56,11 @@ runs.
 | GPT-4o | Zero-shot | 50 | 19.0 | 3.0 | 14.2 | † |
 | GPT-4o | WALDO | 50 | 32.0 | 14.0 | 21.7 | † |
 | Qwen3-VL-32B | Zero-shot | 906 | 20.4 | 13.8 | 13.8 | ✓ |
-| Qwen3-VL-32B | WALDO | 906 | 32.0 | 18.0 | 22.7 | ✓ |
+| Qwen3-VL-32B | WALDO | 50 | 32.0 | 18.0 | 22.7 | ✓ |
 | Qwen3-VL-235B (MoE) | Zero-shot | 906 | 36.3 | 20.1 | 25.1 | ✓ |
 | Qwen3-VL-235B (MoE) | WALDO | 906 | 31.8 | 15.2 | 21.7 | ✓ |
 | Gemini-2.0-Flash | Zero-shot (rep.) | 906 | 18.1 | 6.4 | 15.2 | ✓ |
-| Gemini-2.0-Flash | WALDO | 906 | 38.0 | 10.0 | 24.5 | ✓ |
+| Gemini-2.0-Flash | WALDO | 50 | 38.0 | 10.0 | 24.5 | ✓ |
 
 Primary result: WALDO with Qwen2.5-VL-72B reaches **43.5% mAP@30** (95% CI [40.4, 46.7]),
 a +19.5% relative improvement over the zero-shot reproduction (36.4%); a paired McNemar test
