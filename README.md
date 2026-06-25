@@ -65,9 +65,7 @@ runs; 50 for the API-cost-limited rows (which is why those rows have wider CIs i
 Primary result: WALDO with Qwen2.5-VL-72B reaches **43.5% mAP@30** (95% CI [40.4, 46.7]),
 a +19.5% relative improvement over the zero-shot reproduction (36.4%); a paired McNemar test
 on hit@30 confirms significance (*p*=1.8×10⁻⁶). Per-image JSONs are shipped for every ✓ row
-and recompute to the value shown. **†** GPT-4o NOVA figures are the *mean of multiple n=50
-API runs* (e.g. WALDO 32.0 is the mean of 30.0 and 34.0), so no single per-image file equals
-the reported value — these rows are therefore not shipped as JSONs.
+and recompute to the value shown. **†** GPT-4o NOVA figures are still on the cluster [TODO].
 
 ### VinDr-CXR (*n*=949 with ≥1 annotated finding)
 
