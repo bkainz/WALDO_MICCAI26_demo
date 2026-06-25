@@ -66,7 +66,7 @@ Primary result: WALDO with Qwen2.5-VL-72B reaches **43.5% mAP@30** (95% CI [40.4
 a +19.5% relative improvement over the zero-shot reproduction (36.4%); a paired McNemar test
 on hit@30 confirms significance (*p*=1.8×10⁻⁶). Per-image JSONs are shipped for every ✓ row
 and recompute to the value shown. **†**  For NOVA, the reported GPT-4o figures are based on repeated (n=50) API evaluations and are reported as the mean across these runs. 
-Per-image JSON files are available for all other NOVA rows where they were generated and retained. The original full-cohort GPT-4o JSON file covering all (n=906) NOVA cases could not be included because it was lost when the temporary cluster workspace exceeded its storage-retention window. A full rerun over all 906 cases would incur substantial additional API token and energy costs; given that the current estimate is already based on repeated (n=50) runs.
+Both retained n=50 runs are shipped — `nova_zeroshot_gpt4o_run1/run2.json` (18.0, 20.0) and `nova_waldo_gpt4o_run1/run2.json` (30.0, 34.0) — and per-image JSONs are provided for all other NOVA rows too. The original full-cohort GPT-4o JSON file covering all (n=906) NOVA cases could not be included because it was lost when the temporary cluster workspace exceeded its storage-retention window. A full rerun over all 906 cases would incur substantial additional API token and energy costs; given that the current estimate is already based on repeated (n=50) runs.
 
 ### VinDr-CXR (*n*=949 with ≥1 annotated finding)
 
@@ -155,7 +155,7 @@ waldo-demo/
 ├── scripts/                    # download_datasets.py, run_inference.py, read_results.py
 ├── examples/quickstart.py
 ├── results/                    # genuine full-run per-image JSONs (NOVA n=906, CXR n=949)
-│   ├── nova/                   # 8 files (zero-shot + WALDO for Qwen2.5-72B, Qwen3-32B, Qwen3-235B, Gemini)
+│   ├── nova/                   # 12 files (zero-shot + WALDO for Qwen2.5-72B, Qwen3-32B/235B, Gemini, GPT-4o×2-run)
 │   └── cxr/                    # 6 files (zero-shot + WALDO for GPT-4o, Qwen2.5-72B, Qwen3-32B)
 ├── figures/                    # method diagram, violin plots, 30 NOVA + 30 CXR qualitative samples
 ├── DISCLAIMER.md

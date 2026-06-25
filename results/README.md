@@ -24,11 +24,18 @@ See the top-level [README](../README.md) for the full results tables and
 | `nova_waldo_qwen3_235b.json`        | Qwen3-VL-235B (MoE)| WALDO     | 906 | 31.8% |
 | `nova_zeroshot_gemini20flash.json`  | Gemini-2.0-Flash   | Zero-shot | 906 | 18.1% |
 | `nova_waldo_gemini20flash.json`     | Gemini-2.0-Flash   | WALDO     | 50  | 38.0% |
+| `nova_zeroshot_gpt4o_run1.json`     | GPT-4o             | Zero-shot | 50  | 18.0% |
+| `nova_zeroshot_gpt4o_run2.json`     | GPT-4o             | Zero-shot | 50  | 20.0% |
+| `nova_waldo_gpt4o_run1.json`        | GPT-4o             | WALDO     | 50  | 30.0% |
+| `nova_waldo_gpt4o_run2.json`        | GPT-4o             | WALDO     | 50  | 34.0% |
 
 Each file holds `config`, `metrics` (mAP@30/50, avg IoU, std-err, 95% bootstrap CI) and
-`detailed_results` (per-image `filename`, `iou`, `hit_30`, `hit_50`); all recompute to the
-mAP@30 shown. **GPT-4o NOVA** rows (zero-shot 19.0 / WALDO 32.0) are the mean of multiple
-n=50 API runs and are not shipped as single per-image files.
+`detailed_results` (per-instance `filename`, `iou`, `hit_30`, `hit_50`); all recompute to the
+mAP@30 shown. **GPT-4o NOVA** was run twice at n=50 (the full n=906 GPT-4o run was lost to
+cluster storage retention — see [DISCLAIMER.md](../DISCLAIMER.md)); both retained runs are
+shipped as `*_run1`/`*_run2` and the paper reports their mean — zero-shot 19.0 = mean(18.0,
+20.0); WALDO 32.0 = mean(30.0, 34.0). The n=50 rows are the cost-limited NOVA subset (50
+evaluation instances), hence their wide CIs.
 
 The 906-sample runs recorded `n_refs: 50` (a 50-image healthy reference pool, within the
 paper's stated N=30–50). The paper used 30 IXI healthy brain MRIs as NOVA references whereas

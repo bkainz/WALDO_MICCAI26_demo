@@ -1,0 +1,324 @@
+{
+  "config": {
+    "model": "gpt-4o",
+    "method": "waldo",
+    "dataset": "nova",
+    "n_refs": 50,
+    "seed": 42,
+    "n_samples": 50
+  },
+  "metrics": {
+    "mAP@30": 30.0,
+    "mAP@50": 12.0,
+    "avg_iou": 20.474757903999595,
+    "std_err": 6.676518553857242,
+    "ci_95": [
+      18.0,
+      44.0
+    ],
+    "n_samples": 50
+  },
+  "note": "GPT-4o NOVA WALDO, repeated n=50 API run (seed 42), one of two retained runs. The full n=906 GPT-4o NOVA run was lost to cluster storage retention; these repeated n=50 runs are the retained evidence, and the paper reports their mean (30.0 / 34.0 -> 32.0). detailed_results: per-instance filename/iou/hit_30/hit_50.",
+  "detailed_results": [
+    {
+      "filename": "case0183",
+      "iou": 0.31632646682355137,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0183",
+      "iou": 0.32453119019455207,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0183",
+      "iou": 0.5561781565421977,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0016",
+      "iou": 0.24346338352078445,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0016",
+      "iou": 0.42513801814927465,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0016",
+      "iou": 0.37171938400907084,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0016",
+      "iou": 0.3865749156989998,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0276",
+      "iou": 0.5023284598976807,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0276",
+      "iou": 0.7128683596944058,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0276",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0276",
+      "iou": 0.16423422209453414,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0276",
+      "iou": 0.23808379855525535,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0018",
+      "iou": 0.005107517181017386,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0018",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0018",
+      "iou": 0.08310026144614283,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0062",
+      "iou": 0.28735098339444176,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0062",
+      "iou": 0.2385145018658308,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0062",
+      "iou": 0.26438237797573655,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0062",
+      "iou": 0.2652640468655845,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0158",
+      "iou": 0.33815208587527434,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0158",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0158",
+      "iou": 0.4134683169298304,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0158",
+      "iou": 0.2902632606112707,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0158",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0221",
+      "iou": 0.41943576502243024,
+      "hit_30": true,
+      "hit_50": false
+    },
+    {
+      "filename": "case0221",
+      "iou": 0.5143775655429607,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0221",
+      "iou": 0.16280829084728174,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0104",
+      "iou": 0.6045685876369999,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0263",
+      "iou": 0.6018801497938396,
+      "hit_30": true,
+      "hit_50": true
+    },
+    {
+      "filename": "case0263",
+      "iou": 0.23769507799554396,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0196",
+      "iou": 0.14940077939139473,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0003",
+      "iou": 0.044905439668587135,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0147",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0246",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.05534800132967493,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.16792986102569052,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0070",
+      "iou": 0.0,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0096",
+      "iou": 0.04110574452357355,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0096",
+      "iou": 0.24913494807533434,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0043",
+      "iou": 0.10615187785384164,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0043",
+      "iou": 0.07854458696120153,
+      "hit_30": false,
+      "hit_50": false
+    },
+    {
+      "filename": "case0043",
+      "iou": 0.3770425690060056,
+      "hit_30": true,
+      "hit_50": false
+    }
+  ]
+}
