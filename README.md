@@ -47,7 +47,7 @@ rows marked ✓.
 ### NOVA brain MRI (seed 42)
 
 `n` is the evaluation sample size: 906 (full NOVA test set) for the open Qwen/Gemini full
-runs; 50 for the API-cost-limited rows (which is why those rows have wider CIs in the paper).
+runs.
 
 | Model | Method | n | mAP@30 (%) | mAP@50 (%) | Avg IoU (%) | JSON |
 |---|---|:--:|---|---|---|:--:|
