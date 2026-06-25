@@ -17,7 +17,7 @@ to localise regions of a query scan that differ from those references.
 > the published tables. Reproducing the paper numbers requires the full datasets, the
 > DINOv3-ViT-B/16 backbone (gated on the HuggingFace Hub), and VLM API access. The numbers
 > reported below are the **published paper results**; the JSON files in [`results/`](results/)
-> are the genuine full-run, per-image outputs that back them (NOVA *n*=906, VinDr-CXR *n*=949).
+> are the full-run, per-image outputs that back them (NOVA *n*=906, VinDr-CXR *n*=949).
 > See [DISCLAIMER.md](DISCLAIMER.md).
 
 ## Method
@@ -154,7 +154,7 @@ waldo-demo/
 │   └── visualization.py        # bounding-box drawing
 ├── scripts/                    # download_datasets.py, run_inference.py, read_results.py
 ├── examples/quickstart.py
-├── results/                    # genuine full-run per-image JSONs (NOVA n=906, CXR n=949)
+├── results/                    #  full-run per-image JSONs (NOVA n=906, CXR n=949)
 │   ├── nova/                   # 12 files (zero-shot + WALDO for Qwen2.5-72B, Qwen3-32B/235B, Gemini, GPT-4o×2-run)
 │   └── cxr/                    # 6 files (zero-shot + WALDO for GPT-4o, Qwen2.5-72B, Qwen3-32B)
 ├── figures/                    # method diagram, violin plots, 30 NOVA + 30 CXR qualitative samples
