@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 WALDO quickstart.
-
 Demonstrates the pipeline on one NOVA sample:
   1. Load a query image + its ground-truth boxes and a pool of healthy references.
   2. Run the REAL entropy-weighted Sliced Wasserstein + Goldilocks + DPP reference
