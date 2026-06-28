@@ -238,8 +238,15 @@ class WassersteinReferenceSelector:
         query_image: np.ndarray,
         reference_images: Sequence[np.ndarray],
         n_references: int,
+        ref_select: str = "goldilocks",
     ) -> List[Tuple[int, float]]:
-        """Core selection. Returns list of (reference_index, SW-distance-to-query)."""
+        """Core selection. Returns list of (reference_index, SW-distance-to-query).
+
+        ``ref_select`` controls the strategy:
+          "goldilocks" (default, paper) -- DPP-diverse pick from the 30-70th percentile band;
+          "closest"  (WALDO-v4 opt-in)  -- the n_references with the SMALLEST SW distance;
+          "farthest"                    -- the n_references with the LARGEST SW distance.
+        """
         query_patches = self.extract_patches(query_image)
         query_weights = self.compute_entropy_weights(query_patches)
 
@@ -247,6 +254,14 @@ class WassersteinReferenceSelector:
         distances = np.array(
             [self.sliced_wasserstein_distance(query_patches, rp, query_weights) for rp in ref_patches]
         )
+
+        # WALDO-v4 opt-in: plain closest/farthest-by-distance selection (no zone, no DPP).
+        if ref_select in ("closest", "farthest"):
+            order = np.argsort(distances)
+            if ref_select == "farthest":
+                order = order[::-1]
+            chosen = [int(i) for i in order[:n_references]]
+            return [(i, float(distances[i])) for i in chosen]
 
         # Goldilocks zone: distances within the [low, high] percentile band.
         lo = np.percentile(distances, self.goldilocks_percentiles[0])
@@ -278,19 +293,21 @@ class WassersteinReferenceSelector:
         query_image: np.ndarray,
         reference_images: Sequence[np.ndarray],
         n_references: int = 5,
+        ref_select: str = "goldilocks",
     ) -> List[int]:
         """Return indices of the K selected Goldilocks-zone references (DPP-diverse)."""
-        return [idx for idx, _ in self._select(query_image, reference_images, n_references)]
+        return [idx for idx, _ in self._select(query_image, reference_images, n_references, ref_select)]
 
     def select_references_with_scores(
         self,
         query_image: np.ndarray,
         reference_images: Sequence[np.ndarray],
         n_references: int = 5,
+        ref_select: str = "goldilocks",
     ) -> List[Tuple[int, float]]:
         """Return (index, SW-distance-to-query) for each selected reference.
 
         The distance is used downstream to weight VLM predictions via
         c~ = c * exp(-lambda * SW2(P_q, P_h)).
         """
-        return self._select(query_image, reference_images, n_references)
+        return self._select(query_image, reference_images, n_references, ref_select)

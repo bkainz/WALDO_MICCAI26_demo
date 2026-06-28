@@ -28,7 +28,7 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 import numpy as np
 
 from .reference_selector import WassersteinReferenceSelector
-from .prompting import build_differential_prompt, build_refinement_prompt
+from .prompting import build_differential_prompt, build_refinement_prompt, build_zeroshot_prompt
 
 # Paper hyper-parameters (Sec. "Implementation").
 K_TOTAL = 5          # references per query
@@ -48,6 +48,10 @@ class WALDO:
         >>> waldo = WALDO(vlm_client=client, model="qwen2.5-vl-72b")
         >>> out = waldo.localize(query_rgb, healthy_references, modality="mri")
         >>> out["boxes"]  # final bounding boxes in 0-1000 normalised coordinates
+
+    WALDO-v4 (opt-in robustness variant; base/paper behaviour is the default):
+        >>> waldo = WALDO(vlm_client=client, ref_select="closest",
+        ...               additive=True, backoff=True, max_pred=3)
     """
 
     def __init__(
@@ -64,6 +68,10 @@ class WALDO:
         device: str = "cuda",
         allow_dinov2_fallback: bool = False,
         reference_selector: Optional[WassersteinReferenceSelector] = None,
+        ref_select: str = "goldilocks",
+        additive: bool = False,
+        backoff: bool = False,
+        max_pred: int = 0,
     ):
         self.vlm_client = vlm_client
         self.model = model
@@ -74,6 +82,15 @@ class WALDO:
         self.nms_iou = nms_iou
         self.temperature = temperature
         self.top_p = top_p
+        # WALDO-v4 opt-in robustness knobs (all OFF by default -> base/paper behaviour):
+        #   ref_select  reference strategy: "goldilocks" (paper) | "closest" | "farthest"
+        #   additive    Stage-2 boxes are UNIONED with Stage-1 candidates (never deletes them)
+        #   backoff     empty Stage-1 -> fall back to the model's own zero-shot for that query
+        #   max_pred    cap final boxes to top-K by cross-reference agreement (0 = no cap)
+        self.ref_select = ref_select
+        self.additive = additive
+        self.backoff = backoff
+        self.max_pred = max_pred
         self.reference_selector = reference_selector or WassersteinReferenceSelector(
             device=device, allow_dinov2_fallback=allow_dinov2_fallback
         )
@@ -181,7 +198,8 @@ class WALDO:
         intermediate ``stage1_candidates``, and ``raw_responses``.
         """
         selected = self.reference_selector.select_references_with_scores(
-            query_image, reference_pool, n_references=self.n_references
+            query_image, reference_pool, n_references=self.n_references,
+            ref_select=self.ref_select,
         )
         raw_responses: List[str] = []
 
@@ -222,10 +240,43 @@ class WALDO:
                     s2_boxes.append(box)
                     s2_conf.append(weight)
 
-        if s2_boxes:
+        # ---- Final aggregation -----------------------------------------------
+        raw_pool: List[List[float]] = list(s1_boxes) + list(s2_boxes)  # for max_pred ranking
+        if not candidates and self.backoff:
+            # WALDO-v4 backoff: differential found nothing -> use the model's own
+            # zero-shot detection instead of returning no boxes.
+            zs_resp = self._call_vlm([query_image], build_zeroshot_prompt(modality))
+            raw_responses.append(zs_resp)
+            zs_boxes = self._parse_boxes(zs_resp, key="boxes")
+            raw_pool = list(zs_boxes)
+            final_boxes, final_conf = self._weighted_nms(zs_boxes, [1.0] * len(zs_boxes))
+        elif self.additive:
+            # WALDO-v4 additive refinement: Stage-2 boxes are added to (never replace)
+            # the Stage-1 candidates.
+            final_boxes, final_conf = self._weighted_nms(
+                list(candidates) + s2_boxes, list(cand_conf) + s2_conf
+            )
+        elif s2_boxes:
             final_boxes, final_conf = self._weighted_nms(s2_boxes, s2_conf)
         else:
             final_boxes, final_conf = candidates, cand_conf
+
+        # WALDO-v4 count-fair cap: keep the top-K final boxes by cross-reference agreement.
+        if self.max_pred and len(final_boxes) > self.max_pred:
+            pool = np.asarray(raw_pool, dtype=float) if raw_pool else None
+
+            def _support(box: List[float]) -> int:
+                if pool is None:
+                    return 0
+                return int(np.sum(self._iou(np.asarray(box, dtype=float), pool) >= self.nms_iou))
+
+            order = sorted(
+                range(len(final_boxes)),
+                key=lambda i: (_support(final_boxes[i]), final_conf[i]),
+                reverse=True,
+            )[: self.max_pred]
+            final_boxes = [final_boxes[i] for i in order]
+            final_conf = [final_conf[i] for i in order]
 
         return {
             "boxes": final_boxes,

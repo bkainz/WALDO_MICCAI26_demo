@@ -379,6 +379,12 @@ Output JSON only:
 If nothing differs from the reference: {{"abnormality_found": false, "boxes": []}}"""
 
 
+def build_zeroshot_prompt(modality: str = "mri") -> str:
+    """Single-image zero-shot localisation prompt (WALDO-v4 backoff uses this when
+    the differential stage finds nothing)."""
+    return PromptTemplate(modality)._zero_shot_prompt()
+
+
 def build_refinement_prompt(modality: str, candidates: list) -> str:
     """Stage-2 refinement prompt: confirm / refine / reject Stage-1 candidates."""
     organ = "brain MRI" if modality.lower() == "mri" else "chest X-ray"
