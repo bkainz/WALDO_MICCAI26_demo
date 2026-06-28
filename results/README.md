@@ -28,6 +28,14 @@ See the top-level [README](../README.md) for the full results tables and
 | `nova_zeroshot_gpt4o_run2.json`     | GPT-4o             | Zero-shot | 50  | 20.0% |
 | `nova_waldo_gpt4o_run1.json`        | GPT-4o             | WALDO     | 50  | 30.0% |
 | `nova_waldo_gpt4o_run2.json`        | GPT-4o             | WALDO     | 50  | 34.0% |
+| `nova_zeroshot_qwen25vl_7b.json`      | Qwen2.5-VL-7B     | Zero-shot | 906 | 33.4% |
+| `nova_waldov4_qwen25vl_7b.json`       | Qwen2.5-VL-7B     | WALDO     | 906 | 38.0% |
+| `nova_zeroshot_gemma4_31b.json`       | gemma-4-31B       | Zero-shot | 906 | 39.7% |
+| `nova_waldov4_gemma4_31b.json`        | gemma-4-31B       | WALDO     | 906 | 38.3% |
+| `nova_zeroshot_gemma4_e4b.json`       | gemma-4-E4B       | Zero-shot | 906 | 7.2%  |
+| `nova_waldov4_gemma4_e4b.json`        | gemma-4-E4B       | WALDO     | 906 | 19.8% |
+| `nova_zeroshot_mistral_small_24b.json`| Mistral-Small-24B | Zero-shot | 906 | 22.4% |
+| `nova_waldov4_mistral_small_24b.json` | Mistral-Small-24B | WALDO     | 906 | 25.9% |
 
 Each file holds `config`, `metrics` (mAP@30/50, avg IoU, std-err, 95% bootstrap CI) and
 `detailed_results` (per-instance `filename`, `iou`, `hit_30`, `hit_50`); all recompute to the

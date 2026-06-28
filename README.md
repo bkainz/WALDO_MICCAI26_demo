@@ -61,6 +61,14 @@ runs.
 | Qwen3-VL-235B (MoE) | WALDO | 906 | 31.8 | 15.2 | 21.7 | ✓ |
 | Gemini-2.0-Flash | Zero-shot (rep.) | 906 | 18.1 | 6.4 | 15.2 | ✓ |
 | Gemini-2.0-Flash | WALDO | 906 | 38.0 | 10.0 | 24.5 | ✓ |
+| Qwen2.5-VL-7B | Zero-shot | 906 | 33.4 | 17.1 | 24.5 | ✓ |
+| Qwen2.5-VL-7B | WALDO | 906 | 38.0 | 21.1 | 26.9 | ✓ |
+| gemma-4-31B | Zero-shot | 906 | 39.7 | 22.3 | 24.9 | ✓ |
+| gemma-4-31B | WALDO | 906 | 38.3 | 24.6 | 26.1 | ✓ |
+| gemma-4-E4B | Zero-shot | 906 | 7.2 | 3.0 | 5.1 | ✓ |
+| gemma-4-E4B | WALDO | 906 | 19.8 | 5.1 | 15.0 | ✓ |
+| Mistral-Small-24B | Zero-shot | 906 | 22.4 | 8.3 | 17.4 | ✓ |
+| Mistral-Small-24B | WALDO | 906 | 25.9 | 7.4 | 19.3 | ✓ |
 
 Primary result: WALDO with Qwen2.5-VL-72B reaches **43.5% mAP@30** (95% CI [40.4, 46.7]),
 a +19.5% relative improvement over the zero-shot reproduction (36.4%); a paired McNemar test
